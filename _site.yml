@@ -1,0 +1,64 @@
+name: "statistics-notebook"
+navbar:
+  title: "Design and Analysis of Experiment"
+  left:
+    - text: "Foundations of Experimental Design"
+      menu:
+        - text: "Principles of Experimentation"
+#This will include randomization, replication, local control, blocking (maybe) and crossing (maybe)
+          href: RCommands.html
+        - text: "Choosing a response variable"
+          href: RMarkdownHints.html
+        - text: "Choosing conditions"
+          href: RCheatSheetsAndNotes.html
+        - text: "Choosing units/experimental material"
+          href: DataSources.html
+    - text: "Specific Designs"
+      menu:
+      #Overview, Design/Randomization, Model Structure and Decomposition, Analysis in R (this may have multiple sections too: descriptive data: numerical (means and effect sizes) and graphical, hypothesis testing)
+        - text: "1 Factor, Completely Randomized, Basic Factorial"
+          href: GraphicalSummaries.html
+        - text: "2 Factor, Completely Randomized, Basic Factorial"
+          href: NumericalSummaries.html
+        - text: "3 Factor, Completely Randomized, Basic Factorial"
+          href: NumericalSummaries.html
+        - text: "1 Factor, Complete Block"
+          href: NumericalSummaries.html
+        - text: "Latin Square"
+          href: NumericalSummaries.html
+        - text: "ANCOVA"
+          href: NumericalSummaries.html
+        - text: "Split Plot/Repeated Measures"
+          href: NumericalSummaries.html
+    - text: "Broad Topics"
+      menu:
+        - text: "Multiple Pairwise Testing"
+          href: MakingInference.html
+        - text: "Contrasts"
+          href: tTests.html
+        - text: "Unbalanced Datasets"
+          href: WilcoxonTests.html
+        - text: "Fractional Factorials"
+          href: ANOVA.html
+        - text: "Power"
+          href: Kruskal.html
+        - text: "ANOVA Model and Assumptions"
+          href: LinearRegression.html
+        - text: "Random Factors"
+          href: LogisticRegression.html
+  right:
+    - text: "Datasets"
+      menu:
+        - text: "XYZ"
+          href: ./Data/AnalysisRubric.html
+        - text: "yadda yadda"
+          href: ./Data/StudentHousing.html
+          
+output_dir: '.'
+
+output: 
+  html_document:
+    theme: cerulean
+    css: styles.css
+    highlight: tango
+  
