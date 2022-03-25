@@ -1,6 +1,5 @@
 ---
-title: "Untitled"
-author: "David Palmer"
+title: "BYU-Idaho Math326: Design and Analysis of Experiments"
 date: "1/27/2022"
 output: html_document
 ---
@@ -9,22 +8,24 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## An Customizable Textbook
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This book is meant to be a starting point for you to learn design and analysis of experiments. You should feel free to edit the Rmarkdown files so that the book becomes your own.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### How to Use This Book
 
-```{r cars}
-summary(cars)
-```
+Under Principles of Experiments the most foundational issues and decisions facing each experimenter must be aware of and think about.
 
-## Including Plots
+The Specific Designs section addresses specific designs we will learn about in this course. This list is by no means exhaustive. Within each of these designs there are subsections: 
 
-You can also embed plots, for example:
+* Overview
+* Design/Randomization
+* Model Structure and Decomposition
+* Analysis Using R
+    *   Numerical and graphical summaries
+    *   Hypothesis Testing
+    *   Assumption Checking
+    
+The section labeled Broad Topics seeks to address topics that are relevant to many experiment designs.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+You are welcome to add additional specific designs or add to the list of broad topics.

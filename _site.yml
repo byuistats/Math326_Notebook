@@ -46,6 +46,8 @@ navbar:
           href: LinearRegression.html
         - text: "Random Factors"
           href: LogisticRegression.html
+        - text: "Extending the Basic Designs"
+          href: LogisticRegression.html
   right:
     - text: "Datasets"
       menu:
