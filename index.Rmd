@@ -16,7 +16,9 @@ This book is meant to be a starting point for you to learn design and analysis o
 
 Under Principles of Experiments the most foundational issues and decisions facing each experimenter must be aware of and think about.
 
-The Specific Designs section addresses specific designs we will learn about in this course. This list is by no means exhaustive. Within each of these designs there are subsections: 
+The Specific Designs section addresses specific designs we will learn about in this course. Each design will have an image next to it representing the diagram of the structural factors. 
+
+This list is by no means exhaustive. The taxonomy used for the drop-down works well when we want to cover just these basic few designs but a new taxonomy may work better if more complex designs are considered. Within each of these designs there are subsections: 
 
 * Overview
 * Design/Randomization

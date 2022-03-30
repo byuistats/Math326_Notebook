@@ -15,21 +15,28 @@ navbar:
           href: DataSources.html
     - text: "Specific Designs"
       menu:
-      #Overview, Design/Randomization, Model Structure and Decomposition, Analysis in R (this may have multiple sections too: descriptive data: numerical (means and effect sizes) and graphical, hypothesis testing)
-        - text: "1 Factor, Completely Randomized, Basic Factorial"
-          href: GraphicalSummaries.html
-        - text: "2 Factor, Completely Randomized, Basic Factorial"
-          href: NumericalSummaries.html
-        - text: "3 Factor, Completely Randomized, Basic Factorial"
-          href: NumericalSummaries.html
-        - text: "1 Factor, Complete Block"
-          href: NumericalSummaries.html
-        - text: "Latin Square"
-          href: NumericalSummaries.html
-        - text: "ANCOVA"
-          href: NumericalSummaries.html
-        - text: "Split Plot/Repeated Measures"
-          href: NumericalSummaries.html
+         - text: "Basic Factorial Designs"
+           href: BasicFactorial.html
+         - text: "Block Designs"
+           href: Block.html
+         - text: "Covariate Designs"
+           href: Covariate.html
+         - text: "Nested Factor (aka Split Plot/Repeated Measure) Designs"
+           href: NestedFactor.html
+        # - text: "1 Factor, Completely Randomized, Basic Factorial"
+        #   href: GraphicalSummaries.html
+        # - text: "2 Factor, Completely Randomized, Basic Factorial"
+        #   href: NumericalSummaries.html
+        # - text: "3 Factor, Completely Randomized, Basic Factorial"
+        #   href: NumericalSummaries.html
+        # - text: "1 Factor, Complete Block"
+        #   href: NumericalSummaries.html
+        # - text: "Latin Square"
+        #   href: NumericalSummaries.html
+        # - text: "ANCOVA"
+        #   href: NumericalSummaries.html
+        # - text: "Split Plot/Repeated Measures"
+        #   href: NumericalSummaries.html
     - text: "Broad Topics"
       menu:
         - text: "Multiple Pairwise Testing"
