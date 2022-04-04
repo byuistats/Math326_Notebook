@@ -1,5 +1,9 @@
 ---
 title: "Completely Randomized, Basic Factorial Experiments"
+output: 
+  html_document: 
+    theme: cerulean
+    css: styles.css
 ---
 
 ```{r setup, include=FALSE}
@@ -38,6 +42,8 @@ A study with just one factor
 
 Lorem Ipsum Overview
 
+
+
 #### Hypotheses and model
 
 Here we would list the model in equation form along with the hypotheses we would want to test
@@ -50,13 +56,20 @@ A quick recount of the assumptions associated with the model. If this gets too r
 
 Describe the resulting factor structure or just have the image. This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.
 
+----
+
+
 ### What we do
 
 This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there's a lot to describe. For partial fractional factorials it could get interesting, etc.
 
+----
+
 ### Decomposition and Factor Structure
 
 It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like **notation** get defined, and concepts like **inside vs. outside factors?** Should those go in the broad topics menu?
+
+----
 
 ### Additional resources and links
 
@@ -67,10 +80,6 @@ Here we could link to a full walk through example of the anlaysis (similar to th
 #### Links to outside resources
 
 This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
-
-</div>
-
-</div>
 
 ----
 
@@ -94,13 +103,19 @@ A quick recount of the assumptions associated with the model. If this gets too r
 
 This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.
 
+----
+
 ### What we do
 
 This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there's a lot to describe. For partial fractional factorials it could get interesting, etc.
 
+----
+
 ### Decomposition and Factor Structure
 
 It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like **notation** get defined, and concepts like **inside vs. outside factors?** Should those go in the broad topics menu?
+
+----
 
 ### Additional resources and links
 
@@ -112,11 +127,8 @@ Here we could link to a full walk through example of the anlaysis (similar to th
 
 This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
 
-</div>
-
-</div>
-
 ----
+
 
 ## BF[3] {.tabset .tabset-fade .tabset-pills}
 
@@ -138,13 +150,19 @@ A quick recount of the assumptions associated with the model. If this gets too r
 
 This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.
 
+----
+
 ### What we do
 
 This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there's a lot to describe. For partial fractional factorials it could get interesting, etc.
 
+----
+
 ### Decomposition and Factor Structure
 
 It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like **notation** get defined, and concepts like **inside vs. outside factors?** Should those go in the broad topics menu?
+
+----
 
 ### Additional resources and links
 
@@ -155,10 +173,6 @@ Here we could link to a full walk through example of the anlaysis (similar to th
 #### Links to outside resources
 
 This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
-
-</div>
-
-</div>
 
 ----
 
@@ -170,15 +184,23 @@ This would probably not follow a similar structure as other sections
 
 Lorem Ipsum Overview
 
+----
+
 ### How many treatments, design rank
 
 Here we would list the model in equation form along with the hypotheses we would want to test
+
+----
 
 ### Confounding and a Generating Function
 
 A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics
 
+----
+
 ### Anything else??
+
+----
 
 ### Additional resources and links
 
@@ -190,3 +212,4 @@ Here we could link to a full walk through example of the anlaysis (similar to th
 
 This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
 
+----

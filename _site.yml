@@ -15,7 +15,7 @@ navbar:
           href: DataSources.html
     - text: "Specific Designs"
       menu:
-         - text: "Basic Factorial Designs"
+         - text: "Completely Randomized, Basic Factorial Designs"
            href: BasicFactorial.html
          - text: "Block Designs"
            href: Block.html
@@ -39,22 +39,22 @@ navbar:
         #   href: NumericalSummaries.html
     - text: "Broad Topics"
       menu:
-        - text: "Multiple Pairwise Testing"
-          href: MakingInference.html
+        - text: "ANOVA Model and Assumptions"
+          href: anova_basics.html
         - text: "Contrasts"
           href: tTests.html
-        - text: "Unbalanced Datasets"
-          href: WilcoxonTests.html
-        - text: "Fractional Factorials"
-          href: ANOVA.html
-        - text: "Power"
-          href: Kruskal.html
-        - text: "ANOVA Model and Assumptions"
-          href: LinearRegression.html
-        - text: "Random Factors"
-          href: LogisticRegression.html
         - text: "Extending the Basic Designs"
           href: LogisticRegression.html
+        - text: "Fractional Factorials"
+          href: ANOVA.html
+        - text: "Multiple Pairwise Testing"
+          href: MakingInference.html
+        - text: "Power"
+          href: Kruskal.html
+        - text: "Random Factors"
+          href: LogisticRegression.html
+        - text: "Unbalanced Datasets"
+          href: WilcoxonTests.html
   right:
     - text: "Datasets"
       menu:
