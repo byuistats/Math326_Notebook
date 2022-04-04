@@ -1,0 +1,192 @@
+---
+title: "Completely Randomized, Basic Factorial Experiments"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+---
+
+The experimental designs in this section have 2 key characteristics in common:
+
+*   Conditions are assigned to subjects (a.k.a. experimental units) completely at random
+*   The analysis of all these designs and the way error is accounted for can be approached the same way
+
+To assign something **completely at random** means that each experimental unit has a known and equal (to the other units) chance of being selected for a particular treatment and that no other considerations are taken into account when making treatment assignments. Usually, for balance, the same number of units are assigned to each treatment. For example, if I have 4 treatment and 16 units, I may use a computer to randomly shuffle the units into treatment groups.
+
+Factorial experiments involve two or more factors that are crossed. (A study with just one factor is not technically a factorial design, but we will lump it in with our discussion of factorial experiments her because of the *completely randome* treatment assignment). **Factorial crossing** simply means that each combination of factor levels is considered as a treatment in the study.
+
+Contrast a factorial design with the one-at-a-time approach. In this approach, if I had two factors I wanted to study, I would run two separate experiments to evaluate the effect of each factor on the response one-at-time. Factorial designs have a couple of major advantages over one-factor-at-a-time studies.
+
+1. They are a more efficient use of our time and material: I can get information about both of my factors from just one experimental unit
+2. Perhaps most importantly, factorial designs allow the researcher to estimate interaction effects. Or in other words, we can observe how one factor's effect on the response variable changes for different levels of the other factor.
+
+EXAMPLE of  BF2???
+
+In summary, "factorial" refers to how you determine which treatments will be included in the study, and "completely randomized" refers to how treatments are assigned to subjects. 
+
+----
+
+
+## BF[1] {.tabset .tabset-fade .tabset-pills}
+
+A study with just one factor
+
+### Overview
+
+Lorem Ipsum Overview
+
+#### Hypotheses and model
+
+Here we would list the model in equation form along with the hypotheses we would want to test
+
+#### Assumptions
+
+A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics
+
+#### Factor structure
+
+Describe the resulting factor structure or just have the image. This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.
+
+### What we do
+
+This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there's a lot to describe. For partial fractional factorials it could get interesting, etc.
+
+### Decomposition and Factor Structure
+
+It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like **notation** get defined, and concepts like **inside vs. outside factors?** Should those go in the broad topics menu?
+
+### Additional resources and links
+
+#### Examples
+
+Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)
+
+#### Links to outside resources
+
+This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
+
+</div>
+
+</div>
+
+----
+
+## BF[2] {.tabset .tabset-fade .tabset-pills}
+
+A study with exactly two factors used to predict a continuous response variable.
+
+### Overview
+
+Lorem Ipsum Overview
+
+#### Hypotheses and model
+
+Here we would list the model in equation form along with the hypotheses we would want to test
+
+#### Assumptions
+
+A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics
+
+#### Factor structure image
+
+This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.
+
+### What we do
+
+This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there's a lot to describe. For partial fractional factorials it could get interesting, etc.
+
+### Decomposition and Factor Structure
+
+It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like **notation** get defined, and concepts like **inside vs. outside factors?** Should those go in the broad topics menu?
+
+### Additional resources and links
+
+#### Examples
+
+Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)
+
+#### Links to outside resources
+
+This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
+
+</div>
+
+</div>
+
+----
+
+## BF[3] {.tabset .tabset-fade .tabset-pills}
+
+A study with exactly two factors used to predict a continuous response variable.
+
+### Overview
+
+Lorem Ipsum Overview
+
+#### Hypotheses and model
+
+Here we would list the model in equation form along with the hypotheses we would want to test
+
+#### Assumptions
+
+A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics
+
+#### Factor structure image
+
+This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.
+
+### What we do
+
+This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there's a lot to describe. For partial fractional factorials it could get interesting, etc.
+
+### Decomposition and Factor Structure
+
+It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like **notation** get defined, and concepts like **inside vs. outside factors?** Should those go in the broad topics menu?
+
+### Additional resources and links
+
+#### Examples
+
+Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)
+
+#### Links to outside resources
+
+This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
+
+</div>
+
+</div>
+
+----
+
+## Fractional Factorial Designs {.tabset .tabset-fade .tabset-pills}
+
+This would probably not follow a similar structure as other sections
+
+### Overview??
+
+Lorem Ipsum Overview
+
+### How many treatments, design rank
+
+Here we would list the model in equation form along with the hypotheses we would want to test
+
+### Confounding and a Generating Function
+
+A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics
+
+### Anything else??
+
+### Additional resources and links
+
+#### Examples
+
+Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)
+
+#### Links to outside resources
+
+This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
+

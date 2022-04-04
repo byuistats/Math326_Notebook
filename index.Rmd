@@ -31,3 +31,16 @@ This list is by no means exhaustive. The taxonomy used for the drop-down works w
 The section labeled Broad Topics seeks to address topics that are relevant to many experiment designs.
 
 You are welcome to add additional specific designs or add to the list of broad topics.
+
+#### Suggested Sequence of Topics for Teaching
+
+This book was specifically designed for the Math326 Design and Analysis of Experiments class at BYU-Idaho, as it stands in 2022. BYU-I follows a 14 week semester. After introducing some foundational principles of experimental design, the recommended sequence follows the general pattern of
+
+* Introduce a specific design: suitability/benefits of the design, explanation of the design, factor structure and decomposition, steps for analysis (including R code)
+* Discuss new topics/complexities/considerations associated with that design located in the Broad Topics list.
+
+## Book Scope
+
+This is an introductory book intended to familiarize students with foundational concepts and vocabulary in the design and analysis of experiments. The designs covered in this book are the most basic and all assume a continuous response variable. Hopefully with this foundation students will be prepared to excel in experimental design and analysis courses in grad school, or be able to extend these principles to more complex designs as practitioners.
+
+

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Completely Randomized, Basic Factorial Experiments</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Design and Analysis of Experiment</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Foundations of Experimental Design
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="RCommands.html">Principles of Experimentation</a>
+    </li>
+    <li>
+      <a href="RMarkdownHints.html">Choosing a response variable</a>
+    </li>
+    <li>
+      <a href="RCheatSheetsAndNotes.html">Choosing conditions</a>
+    </li>
+    <li>
+      <a href="DataSources.html">Choosing units/experimental material</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Specific Designs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="BasicFactorial.html">Basic Factorial Designs</a>
+    </li>
+    <li>
+      <a href="Block.html">Block Designs</a>
+    </li>
+    <li>
+      <a href="Covariate.html">Covariate Designs</a>
+    </li>
+    <li>
+      <a href="NestedFactor.html">Nested Factor (aka Split Plot/Repeated Measure) Designs</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Broad Topics
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="MakingInference.html">Multiple Pairwise Testing</a>
+    </li>
+    <li>
+      <a href="tTests.html">Contrasts</a>
+    </li>
+    <li>
+      <a href="WilcoxonTests.html">Unbalanced Datasets</a>
+    </li>
+    <li>
+      <a href="ANOVA.html">Fractional Factorials</a>
+    </li>
+    <li>
+      <a href="Kruskal.html">Power</a>
+    </li>
+    <li>
+      <a href="LinearRegression.html">ANOVA Model and Assumptions</a>
+    </li>
+    <li>
+      <a href="LogisticRegression.html">Random Factors</a>
+    </li>
+    <li>
+      <a href="LogisticRegression.html">Extending the Basic Designs</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Datasets
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./Data/AnalysisRubric.html">XYZ</a>
+    </li>
+    <li>
+      <a href="./Data/StudentHousing.html">yadda yadda</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Completely Randomized, Basic Factorial Experiments</h1>
+
+</div>
+
+
+<hr />
+<p>The experimental designs in this section have 2 key characteristics in common:</p>
+<ul>
+<li>Conditions are assigned to subjects (a.k.a. experimental units) completely at random</li>
+<li>The analysis of all these designs and the way error is accounted for can be approached the same way</li>
+</ul>
+<p>To assign something <strong>completely at random</strong> means that each experimental unit has a known and equal (to the other units) chance of being selected for a particular treatment and that no other considerations are taken into account when making treatment assignments. Usually, for balance, the same number of units are assigned to each treatment. For example, if I have 4 treatment and 16 units, I may use a computer to randomly shuffle the units into treatment groups.</p>
+<p>Factorial experiments involve two or more factors that are crossed. (A study with just one factor is not technically a factorial design, but we will lump it in with our discussion of factorial experiments her because of the <em>completely randome</em> treatment assignment). <strong>Factorial crossing</strong> simply means that each combination of factor levels is considered as a treatment in the study.</p>
+<p>Contrast a factorial design with the one-at-a-time approach. In this approach, if I had two factors I wanted to study, I would run two separate experiments to evaluate the effect of each factor on the response one-at-time. Factorial designs have a couple of major advantages over one-factor-at-a-time studies.</p>
+<ol style="list-style-type: decimal">
+<li>They are a more efficient use of our time and material: I can get information about both of my factors from just one experimental unit</li>
+<li>Perhaps most importantly, factorial designs allow the researcher to estimate interaction effects. Or in other words, we can observe how one factor’s effect on the response variable changes for different levels of the other factor.</li>
+</ol>
+<p>EXAMPLE of BF2???</p>
+<p>In summary, “factorial” refers to how you determine which treatments will be included in the study, and “completely randomized” refers to how treatments are assigned to subjects.</p>
+<hr />
+<div id="bf1" class="section level2 tabset tabset-fade tabset-pills">
+<h2>BF[1]</h2>
+<p>A study with just one factor</p>
+<div id="overview" class="section level3">
+<h3>Overview</h3>
+<p>Lorem Ipsum Overview</p>
+<div id="hypotheses-and-model" class="section level4">
+<h4>Hypotheses and model</h4>
+<p>Here we would list the model in equation form along with the hypotheses we would want to test</p>
+</div>
+<div id="assumptions" class="section level4">
+<h4>Assumptions</h4>
+<p>A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics</p>
+</div>
+<div id="factor-structure" class="section level4">
+<h4>Factor structure</h4>
+<p>Describe the resulting factor structure or just have the image. This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.</p>
+</div>
+</div>
+<div id="what-we-do" class="section level3">
+<h3>What we do</h3>
+<p>This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there’s a lot to describe. For partial fractional factorials it could get interesting, etc.</p>
+</div>
+<div id="decomposition-and-factor-structure" class="section level3">
+<h3>Decomposition and Factor Structure</h3>
+<p>It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like <strong>notation</strong> get defined, and concepts like <strong>inside vs. outside factors?</strong> Should those go in the broad topics menu?</p>
+</div>
+<div id="additional-resources-and-links" class="section level3">
+<h3>Additional resources and links</h3>
+<div id="examples" class="section level4">
+<h4>Examples</h4>
+<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+</div>
+<div id="links-to-outside-resources" class="section level4">
+<h4>Links to outside resources</h4>
+<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+</div>
+</div>
+<hr />
+</div>
+</div>
+</div>
+<div id="bf2" class="section level2 tabset tabset-fade tabset-pills">
+<h2>BF[2]</h2>
+<p>A study with exactly two factors used to predict a continuous response variable.</p>
+<div id="overview-1" class="section level3">
+<h3>Overview</h3>
+<p>Lorem Ipsum Overview</p>
+<div id="hypotheses-and-model-1" class="section level4">
+<h4>Hypotheses and model</h4>
+<p>Here we would list the model in equation form along with the hypotheses we would want to test</p>
+</div>
+<div id="assumptions-1" class="section level4">
+<h4>Assumptions</h4>
+<p>A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics</p>
+</div>
+<div id="factor-structure-image" class="section level4">
+<h4>Factor structure image</h4>
+<p>This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.</p>
+</div>
+</div>
+<div id="what-we-do-1" class="section level3">
+<h3>What we do</h3>
+<p>This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there’s a lot to describe. For partial fractional factorials it could get interesting, etc.</p>
+</div>
+<div id="decomposition-and-factor-structure-1" class="section level3">
+<h3>Decomposition and Factor Structure</h3>
+<p>It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like <strong>notation</strong> get defined, and concepts like <strong>inside vs. outside factors?</strong> Should those go in the broad topics menu?</p>
+</div>
+<div id="additional-resources-and-links-1" class="section level3">
+<h3>Additional resources and links</h3>
+<div id="examples-1" class="section level4">
+<h4>Examples</h4>
+<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+</div>
+<div id="links-to-outside-resources-1" class="section level4">
+<h4>Links to outside resources</h4>
+<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+</div>
+</div>
+<hr />
+</div>
+</div>
+</div>
+<div id="bf3" class="section level2 tabset tabset-fade tabset-pills">
+<h2>BF[3]</h2>
+<p>A study with exactly two factors used to predict a continuous response variable.</p>
+<div id="overview-2" class="section level3">
+<h3>Overview</h3>
+<p>Lorem Ipsum Overview</p>
+<div id="hypotheses-and-model-2" class="section level4">
+<h4>Hypotheses and model</h4>
+<p>Here we would list the model in equation form along with the hypotheses we would want to test</p>
+</div>
+<div id="assumptions-2" class="section level4">
+<h4>Assumptions</h4>
+<p>A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics</p>
+</div>
+<div id="factor-structure-image-1" class="section level4">
+<h4>Factor structure image</h4>
+<p>This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.</p>
+</div>
+</div>
+<div id="what-we-do-2" class="section level3">
+<h3>What we do</h3>
+<p>This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there’s a lot to describe. For partial fractional factorials it could get interesting, etc.</p>
+</div>
+<div id="decomposition-and-factor-structure-2" class="section level3">
+<h3>Decomposition and Factor Structure</h3>
+<p>It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like <strong>notation</strong> get defined, and concepts like <strong>inside vs. outside factors?</strong> Should those go in the broad topics menu?</p>
+</div>
+<div id="additional-resources-and-links-2" class="section level3">
+<h3>Additional resources and links</h3>
+<div id="examples-2" class="section level4">
+<h4>Examples</h4>
+<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+</div>
+<div id="links-to-outside-resources-2" class="section level4">
+<h4>Links to outside resources</h4>
+<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+</div>
+</div>
+<hr />
+</div>
+</div>
+</div>
+<div id="fractional-factorial-designs" class="section level2 tabset tabset-fade tabset-pills">
+<h2>Fractional Factorial Designs</h2>
+<p>This would probably not follow a similar structure as other sections</p>
+<div id="overview-3" class="section level3">
+<h3>Overview??</h3>
+<p>Lorem Ipsum Overview</p>
+</div>
+<div id="how-many-treatments-design-rank" class="section level3">
+<h3>How many treatments, design rank</h3>
+<p>Here we would list the model in equation form along with the hypotheses we would want to test</p>
+</div>
+<div id="confounding-and-a-generating-function" class="section level3">
+<h3>Confounding and a Generating Function</h3>
+<p>A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics</p>
+</div>
+<div id="anything-else" class="section level3">
+<h3>Anything else??</h3>
+</div>
+<div id="additional-resources-and-links-3" class="section level3">
+<h3>Additional resources and links</h3>
+<div id="examples-3" class="section level4">
+<h4>Examples</h4>
+<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+</div>
+<div id="links-to-outside-resources-3" class="section level4">
+<h4>Links to outside resources</h4>
+<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
