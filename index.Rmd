@@ -14,21 +14,21 @@ This book is meant to be a starting point for you to learn design and analysis o
 
 ### How to Use This Book
 
-Under Principles of Experiments the most foundational issues and decisions facing each experimenter must be aware of and think about.
+Under Principles of Experiments the most foundational issues that face each experimenter are described.
 
 The Specific Designs section addresses specific designs we will learn about in this course. Each design will have an image next to it representing the diagram of the structural factors. 
 
 This list is by no means exhaustive. The taxonomy used for the drop-down works well when we want to cover just these basic few designs but a new taxonomy may work better if more complex designs are considered. Within each of these designs there are subsections: 
 
 * Overview
-* Design/Randomization
-* Model Structure and Decomposition
-* Analysis Using R
-    *   Numerical and graphical summaries
-    *   Hypothesis Testing
-    *   Assumption Checking
+* Design
+* Decomposition
+* R instructions: code illustrating how to run the model
+* Resources
     
 The section labeled Broad Topics seeks to address topics that are relevant to many experiment designs.
+
+Finally, a section dedicated to R code that can be used in multiple designs. This includes numerical and graphical data summaries as well as code for model diagnostics/assumption checking.
 
 You are welcome to add additional specific designs or add to the list of broad topics.
 

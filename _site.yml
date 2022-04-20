@@ -45,7 +45,7 @@ navbar:
           href: tTests.html
         - text: "Extending the Basic Designs"
           href: LogisticRegression.html
-        - text: "Fractional Factorials"
+        - text: "Notation"
           href: ANOVA.html
         - text: "Multiple Pairwise Testing"
           href: MakingInference.html
@@ -55,6 +55,14 @@ navbar:
           href: LogisticRegression.html
         - text: "Unbalanced Datasets"
           href: WilcoxonTests.html
+    - text: "R Instructions"
+      menu:
+        - text: "Numerical summaries"
+          href: numerical_summaries.html
+        - text: "Graphical summaries"
+          href: graphical_summaries.html
+        - text: "Model diagnostics"
+          href: model_diagnostics.html
   right:
     - text: "Datasets"
       menu:
