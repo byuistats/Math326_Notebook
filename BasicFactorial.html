@@ -594,7 +594,7 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 </tbody>
 </table>
 <p>You may notice in the above example that, even with randomization, treatment C occurs in the last 2 observations. If we were truly concerned about the order we could be more strategic and implement a <em>blocked design</em> to prevent “unlucky” ordering and pairing.</p>
-<p>Consider the following example. An experiment was done to asses different modes of virtual training in how to launch a lifeboat. Sixteen students in the maritime safety training institute were a part of the study, and each of the students were assigned one of four possible virtual training experiences. The four experiences included: Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor Display/Joypad (3), and Head Monitor Display/Wearables (4). The students were then given a pre-test before training and a post-test after training and the difference between the two scores was the measurement used from each student in the analysis.</p>
+<p>Consider the following example. An experiment was done to asses different modes of virtual training in how to launch a lifeboat. Sixteen students in the maritime safety training institute were a part of the study, and each of the students were assigned one of four possible virtual training experiences. The four experiences included: Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor Display/Joypad (3), and Head Monitor Display/Wearables (4). The response variable was the student’s performance on a procedural knowledge assessment (performance is defined as their level of improvement from pre to post test).</p>
 <p>To obtain a balanced design, we will want each treatment to be assigned to four students. We could get 16 pieces of paper and write “Treatment 1” on 4 pieces, “Treatment 2” on another 4 pieces, and so on until each treatment has 4 pieces of paper. We could then put them in a hat, mix them up and then randomly draw out a piece of paper to assign it to a subject. Intuitively this makes sense, but writing and cutting paper is slow and inefficient. We could implement a similar process in R to assign treatments.</p>
 <p>First, we list all the possible treatments, and repeat that listing until it is the same size as our count of subjects. (Note, if your number of subjects is not an exact multiple of the number of treatments, you may need to decide which treatments deserve fewer observations)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>treatment_list &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">4</span>) <span class="co">#This repeats the sequence of 1 to 4, four times</span></span>
@@ -763,7 +763,7 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 <p><img src="images/BF1_factor_structure_with_equation.PNG" /></p>
 <p>A basic one-way factorial design has three factors: the benchmark, treatment, and residual. The effects of these factors can be summed together to find each observed value.</p>
 <ul>
-<li>The <strong>observed values</strong> on the left show that there are 24 distinct observations, represented by the 24 cells - one for each of the observed values.</li>
+<li>The <strong>observed values</strong> on the left show that there are 24 distinct observations of performance score, represented by the 24 cells - one for each of the observed values.</li>
 <li>The <strong>benchmark</strong> represents the grand mean (or overall mean). The single large cell indicates that there is only one grand mean and it is part of every observation.<br />
 </li>
 <li>The <strong>treatment factor</strong> involves the four levels of the treatment represented by the four vertically long cells. Each treatment may have a distinct mean (or effect).</li>
@@ -775,7 +775,7 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 <p>A factor is inside of another factor if all the levels of one factor (<strong>the inside factor</strong>) completely fits within a second factor (<strong>the outside factor</strong>).</p>
 <p>You may find this analogy helpful. Pretend that an outside factor is a box, and the inside factor levels are blocks that fit perfectly within the box.</p>
 <center>
-<img src="images/wooden_blocks_in_box.jpg" width = 150px;> <!-- ![blocks in box](images/wooden_blocks_in_box.jpg) --> <!-- picture from: https://www.amazon.com/MOD-Complete-Extra-Large-Size/dp/B079J8PB73 -->
+<img src="images/wooden_blocks_in_box.jpg" width = 200px;> <!-- ![blocks in box](images/wooden_blocks_in_box.jpg) --> <!-- picture from: https://www.amazon.com/MOD-Complete-Extra-Large-Size/dp/B079J8PB73 -->
 </center>
 <p>In our basic one-way factorial design there are three factors: the benchmark, treatment, and residuals. In the picture below, benchmark is represented in red, treatment is drawn in blue, and the residual factor levels are depicted in black.</p>
 <p><img src="images/inside_outside_1.JPG" /></p>
@@ -807,11 +807,12 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 <p><strong>df = Total levels of a factor minus the sum of the df of all outside factors</strong></p>
 </blockquote>
 </center>
+<p>An alternative method of finding degrees of freedom is to count the number of unique pieces of information in a factor.</p>
 <p>Going back to the lifeboat training example (see example above), we have 24 observations total and four levels of the treatment.</p>
 <p><img src="images/BF1_factor_structure_with_equation.PNG" /></p>
 <p>For <strong>benchmark</strong>, there is only one level of the factor (shown by the one cell) and there are no outside factors for benchmark. Therefore, the degrees of freedom for benchmark is one. Another way to think of this is that the degrees of freedom represents the number of unique pieces of information contributing to the estimation of the effects for that factor. In this case, as soon as I know the benchmark value (or better stated, as soon as I estimate the benchmark value) for just one of the observations, I know it for all the observations. Therefore, there is just one degree of freedom.</p>
 <p>For <strong>treatment</strong>, there are four levels of the factor (shown by the four vertically long cells for treatment). Benchmark is the only factor outside of treatment. Take the number of levels for treatment (4) and subtract the degrees of freedom for benchmark (1), which yields 4-1 = <strong>3 degrees of freedom</strong> for treatment.</p>
-<p>Another approach to finding the degrees of freedom is to identify how many unique pieces of information the treatment effects really contain. Since all observations from the same treatment will have the same treatment effect applied, we really only need to know 4 pieces of information: the effect of each treatment. But the answer is actually less than that. Because we know that the effects must all sum to zero, only 3 of the effects are free to vary and the 4th one is constrained to be whatever value will satisfy this mathematical condition. Thus, the degrees of freedom is 3. As soon as we know 3 of the treatment effects, we can fill in the treatment effects for all the observations.</p>
+<p>We could just as easily have used the other approach to finding the degrees of freedom: counting the unique pieces of information the treatment effects really contains. Since all observations from the same treatment will have the same treatment effect applied, we really only need to know 4 pieces of information: the effect of each treatment. But the answer is actually less than that. Because we know that the effects must all sum to zero, only 3 of the effects are free to vary and the 4th one is constrained to be whatever value will satisfy this mathematical condition. Thus, the degrees of freedom is 3. As soon as we know 3 of the treatment effects, we can fill in the treatment effects for all the observations.</p>
 <p>For <strong>residual errors</strong>, there are 24 levels of the factor (as shown by the 24 cells for residual error on the far right of the factor structure diagram). Both benchmark and treatment are outside factors for the residual errors factor. Take the number of levels for the residual error (24) and subtract the sum of the degrees of freedom for benchmark and treatment (3+1=4). The residual error has 24 - (3+1) = <strong>20 degrees of freedom</strong>.</p>
 <p>The approach of counting unique pieces of information can be applied here as well. In this case, we use the fact that the treatment effects must sum to zero within each treatment. So within each treatment, 5 of the observations are free to vary, but the 6th will be determined by the fact that their sum must be zero. Five observations multiplied by 4 treatments is 20 observations, or in other words, 20 degrees of freedom.</p>
 </div>
@@ -846,13 +847,13 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 <p><span class="math display">\[
 4.789 - 6.5846 = -1.8358
 \]</span></p>
-<p>Being in the control group has the effect of <em>reducing</em> the difference between the pre-test and post-test score by 1.8358 on average compared to the overall, or grand, mean. In a similar way you can find the effect for Monitor/Keyboard 7.8492 - 6.5846 = 1.2645. This means the difference between the pre-test and post-test scores increased by 1.2645 on average compared to the overall mean. Presumably this is a good thing, it means this treatment was effective at boosting post-test scores. For Head Monitor Display/Joypad, the effect is -0.0058 (6.5789 -6.5846). For Head Monitor Display/Wearables, the effect is 0.5770 (7.1616 -6.5846) (see below).</p>
+<p>Being in the control group has the effect of <em>reducing</em> the student’s performance by 1.8358 on average compared to the overall, or grand, mean. In a similar way you can find the effect for Monitor/Keyboard 7.8492 - 6.5846 = 1.2645. This means the student performance scores increased by 1.2645 on average in this condition compared to the overall mean. For Head Monitor Display/Joypad, the effect is -0.0058 (6.5789 - 6.5846). For Head Monitor Display/Wearables, the effect is 0.5770 (7.1616 - 6.5846) (see below).</p>
 <p><img src="images/BF1_trt_effect_boat_decomp.png" /></p>
 <p>To calculate the residual error effects we must remember that there are 24 levels of residuals. Therefore, the factor level mean for a residual is simply the observed value itself. This means the residual effect can be calculated by taking an observed value and subtracting the effects for benchmark and the effect for the treatment that particular observation received. For instance, for the observation located in the top left of our dataset the observed value is 4.5614. Subtract the sum of the effects of outside factors (benchmark and treatment). This observation was from the control group so we get:</p>
 <p><span class="math display">\[
 4.5614 - (6.5846 + -1.8358) = -0.1875
 \]</span></p>
-<p>The value for the top left cell in residual errors factor is -0.1875. This means the observed value of 4.5614 was lower than we would have expected it to be. In other words, the observed value of 4.5614 was -0.1875 less than the average for all observations in the control group. In context of the this study, this individual’s post-test score improvement was even lower than his/her peers who received the same type of training.</p>
+<p>The value for the top left cell in residual errors effects is -0.1875. This means the observed value of 4.5614 was lower than we would have expected it to be. In other words, the performance score of 4.5614 was -0.1875 less than the average for all observations in the control group. In context of the this study, this individual’s performance was lower than his/her peers who received the same type of training.</p>
 <p>We can repeat the calculation for the first residual in the second column. Take the observed value (5.4532) and subtract the sum of the effect due to benchmark and its respective treatment (in this case monitor/keyboard). The residual is</p>
 <p><span class="math display">\[
 5.4523 - (6.5846 + 1.2645) = -2.3960
@@ -1193,7 +1194,7 @@ F_\text{Treatment} = \frac{MS_\text{Treatment}}{MS_\text{Residual Error}} = \fra
 <p>In this example, we get</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(<span class="fl">2.11</span>, <span class="dv">3</span>, <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] 0.1310051</code></pre>
-<p>This p-value, 0.1310, is greater than a typical level of significance (0.05), so we would fail to reject the null hypothesis that all the effects due to treatment are equal to zero. Meaning, we would have insufficient evidence to say that any of the training methods had an impact on the pre-post difference in test scores regarding launching a life boat.</p>
+<p>This p-value, 0.1310, is greater than a typical level of significance (0.05), so we would fail to reject the null hypothesis that all the effects due to treatment are equal to zero. Meaning, we have insufficient evidence to say that any of the training methods had an impact on procedural knowledge test scores regarding launching a life boat.</p>
 <table style="width:65%; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
@@ -1336,11 +1337,12 @@ Total
 <h3>Resources</h3>
 <div id="examples" class="section level4">
 <h4>Examples</h4>
-<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+<p><a href="examples/VirtualTrain.html">Lifeboat launch training</a></p>
+<p><a href="examples/mosquito.html">Mosquito</a></p>
 </div>
 <div id="links-to-outside-resources" class="section level4">
 <h4>Links to outside resources</h4>
-<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+<p>Populate this section yourself with links to good examples, definitions, other sections within this textbook, or anything else you think will be interesting/helpful.</p>
 <hr />
 </div>
 </div>

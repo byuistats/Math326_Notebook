@@ -121,7 +121,7 @@ Subject 6 |    B      | 2
 
 You may notice in the above example that, even with randomization, treatment C occurs in the last 2 observations. If we were truly concerned about the order we could be more strategic and implement a *blocked design* to prevent "unlucky" ordering and pairing.
 
-Consider the following example. An experiment was done to asses different modes of virtual training in how to launch a lifeboat. Sixteen students in the maritime safety training institute were a part of the study, and each of the students were assigned one of four possible virtual training experiences.  The four experiences included: Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor Display/Joypad (3), and Head Monitor Display/Wearables (4).  The students were then given a pre-test before training and a post-test after training and the difference between the two scores was the measurement used from each student in the analysis.
+Consider the following example. An experiment was done to asses different modes of virtual training in how to launch a lifeboat. Sixteen students in the maritime safety training institute were a part of the study, and each of the students were assigned one of four possible virtual training experiences.  The four experiences included: Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor Display/Joypad (3), and Head Monitor Display/Wearables (4).  The response variable was the student's performance on a procedural knowledge assessment (performance is defined as their level of improvement from pre to post test). 
 
 To obtain a balanced design, we will want each treatment to be assigned to four students. We could get 16 pieces of paper and write "Treatment 1" on 4 pieces, "Treatment 2" on another 4 pieces, and so on until each treatment has 4 pieces of paper. We could then put them in a hat, mix them up and then randomly draw out a piece of paper to assign it to a subject. Intuitively this makes sense, but writing and cutting paper is slow and inefficient. We could implement a similar process in R to assign treatments.
 
@@ -195,7 +195,7 @@ A factor structure for an experimental design can help provide an effective way 
 
 A basic one-way factorial design has three factors: the benchmark, treatment, and residual.  The effects of these factors can be summed together to find each observed value.
 
-* The **observed values** on the left show that there are 24 distinct observations, represented by the 24 cells - one for each of the observed values.
+* The **observed values** on the left show that there are 24 distinct observations of performance score, represented by the 24 cells - one for each of the observed values.
 * The **benchmark** represents the grand mean (or overall mean).  The single large cell indicates that there is only one grand mean and it is part of every observation.  
 * The **treatment factor** involves the four levels of the treatment represented by the four vertically long cells. Each treatment may have a distinct mean (or effect).
 * The **residual error** represents the difference between the observed value and the predicted value. The predicted value, also called the fitted value, is the sum of the grand mean and treatment effect.  Each of the cells represent a distinct value for the residual error.
@@ -209,7 +209,7 @@ A factor is inside of another factor if all the levels of one factor (**the insi
 You may find this analogy helpful. Pretend that an outside factor is a box, and the inside factor levels are blocks that fit perfectly within the box.  
 
 <center>
-<img src="./images/wooden_blocks_in_box.jpg" width = 150px;>
+<img src="./images/wooden_blocks_in_box.jpg" width = 200px;>
 <!-- ![blocks in box](images/wooden_blocks_in_box.jpg) -->
 <!-- picture from: https://www.amazon.com/MOD-Complete-Extra-Large-Size/dp/B079J8PB73 -->
 </center>
@@ -257,6 +257,8 @@ The general formula for degrees of freedom for any factor in a design is:
 
 
 
+An alternative method of finding degrees of freedom is to count the number of unique pieces of information in a factor.
+
 Going back to the lifeboat training example (see example above),  we have 24 observations total and four levels of the treatment.
 
 ![](images/BF1_factor_structure_with_equation.PNG)
@@ -265,7 +267,7 @@ For **benchmark**, there is only one level of the factor (shown by the one cell)
 
 For **treatment**, there are four levels of the factor (shown by the four vertically long cells for treatment). Benchmark is the only factor outside of treatment.  Take the number of levels for treatment (4) and subtract the degrees of freedom for benchmark (1), which yields 4-1 = **3 degrees of freedom** for treatment. 
 
-Another approach to finding the degrees of freedom is to identify how many unique pieces of information the treatment effects really contain. Since all observations from the same treatment will have the same treatment effect applied, we really only need to know 4 pieces of information: the effect of each treatment. But the answer is actually less than that. Because we know that the effects must all sum to zero, only 3 of the effects are free to vary and the 4th one is constrained to be whatever value will satisfy this mathematical condition. Thus, the degrees of freedom is 3. As soon as we know 3 of the treatment effects, we can fill in the treatment effects for all the observations.
+We could just as easily have used the other approach to finding the degrees of freedom: counting the unique pieces of information the treatment effects really contains. Since all observations from the same treatment will have the same treatment effect applied, we really only need to know 4 pieces of information: the effect of each treatment. But the answer is actually less than that. Because we know that the effects must all sum to zero, only 3 of the effects are free to vary and the 4th one is constrained to be whatever value will satisfy this mathematical condition. Thus, the degrees of freedom is 3. As soon as we know 3 of the treatment effects, we can fill in the treatment effects for all the observations.
 
 For **residual errors**, there are 24 levels of the factor (as shown by the 24 cells for residual error on the far right of the factor structure diagram).  Both benchmark and treatment are outside factors for the residual errors factor.  Take the number of levels for the residual error (24) and subtract the sum of the degrees of freedom for benchmark and treatment (3+1=4). The residual error has 24 - (3+1) = **20 degrees of freedom**. 
 
@@ -315,7 +317,7 @@ $$
 4.789 - 6.5846 = -1.8358
 $$
 
-Being in the control group has the effect of *reducing* the difference between the pre-test and post-test score by 1.8358 on average compared to the overall, or grand, mean. In a similar way you can find the effect for Monitor/Keyboard 7.8492 - 6.5846 = 1.2645. This means the difference between the pre-test and post-test scores increased by 1.2645 on average compared to the overall mean. Presumably this is a good thing, it means this treatment was effective at boosting post-test scores. For Head Monitor Display/Joypad, the effect is -0.0058 (6.5789 -6.5846).  For Head Monitor Display/Wearables, the effect is 0.5770 (7.1616 -6.5846) (see below).
+Being in the control group has the effect of *reducing* the student's performance by 1.8358 on average compared to the overall, or grand, mean. In a similar way you can find the effect for Monitor/Keyboard 7.8492 - 6.5846 = 1.2645. This means the student performance scores increased by 1.2645 on average in this condition compared to the overall mean. For Head Monitor Display/Joypad, the effect is -0.0058 (6.5789 - 6.5846).  For Head Monitor Display/Wearables, the effect is 0.5770 (7.1616 - 6.5846) (see below).
 
 
 ![](images/BF1_trt_effect_boat_decomp.png)
@@ -326,7 +328,7 @@ $$
 4.5614 - (6.5846 + -1.8358) = -0.1875
 $$
 
-The value for the top left cell in residual errors factor is -0.1875. This means the observed value of 4.5614 was lower than we would have expected it to be. In other words, the observed value of 4.5614 was -0.1875 less than the average for all observations in the control group. In context of the this study, this individual's post-test score improvement was even lower than his/her peers who received the same type of training.  
+The value for the top left cell in residual errors effects is -0.1875. This means the observed value of 4.5614 was lower than we would have expected it to be. In other words, the performance score of 4.5614 was -0.1875 less than the average for all observations in the control group. In context of the this study, this individual's performance was lower than his/her peers who received the same type of training.  
 
 We can repeat the calculation for the first residual in the second column. Take the observed value (5.4532) and subtract the sum of the effect due to benchmark and its respective treatment (in this case monitor/keyboard). The residual is 
 
@@ -464,7 +466,7 @@ In this example, we get
 1 - pf(2.11, 3, 20)
 ```
 
-This p-value, 0.1310, is greater than a typical level of significance (0.05), so we would fail to reject the null hypothesis that all the effects due to treatment are equal to zero.  Meaning, we would have insufficient evidence to say that any of the training methods had an impact on the pre-post difference in test scores regarding launching a life boat.
+This p-value, 0.1310, is greater than a typical level of significance (0.05), so we would fail to reject the null hypothesis that all the effects due to treatment are equal to zero.  Meaning, we have insufficient evidence to say that any of the training methods had an impact on procedural knowledge test scores regarding launching a life boat.
 
 ```{r echo = FALSE}
 #Replace the blanks with numbers in the SS column
@@ -512,6 +514,8 @@ YourDataSet %>%
   Summarise(MeanY = mean(Y), sdY = sd(Y), sampleSize = n()) 
 ```
 
+
+
 #### Graphical Summaries
 
 To obtain a boxplot:
@@ -535,11 +539,13 @@ To obtain a boxplot:
 
 #### Examples
 
-Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)
+[Lifeboat launch training](examples/VirtualTrain.html)
+
+[Mosquito](examples/mosquito.html)
 
 #### Links to outside resources
 
-This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else
+Populate this section yourself with links to good examples, definitions, other sections within this textbook, or anything else you think will be interesting/helpful.
 
 ----
 
