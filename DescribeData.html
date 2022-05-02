@@ -13,7 +13,8 @@
 
 <title>Describing Data</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -29,7 +30,6 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -41,6 +41,7 @@
     </style>
 
 
+
 <style type="text/css">
   code {
     white-space: pre;
@@ -50,19 +51,19 @@
   }
 </style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -82,7 +83,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -163,6 +164,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -315,7 +319,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -325,7 +329,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Foundations of Experimental Design
      
     <span class="caret"></span>
@@ -346,7 +350,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Specific Designs
      
     <span class="caret"></span>
@@ -367,7 +371,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Broad Topics
      
     <span class="caret"></span>
@@ -377,7 +381,7 @@ $(document).ready(function () {
       <a href="anova_basics.html">ANOVA Model and Assumptions</a>
     </li>
     <li>
-      <a href="tTests.html">Contrasts</a>
+      <a href="junko.html">quarto experiment</a>
     </li>
     <li>
       <a href="LogisticRegression.html">Extending the Basic Designs</a>
@@ -400,17 +404,14 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     R Instructions
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="numerical_summaries.html">Numerical summaries</a>
-    </li>
-    <li>
-      <a href="graphical_summaries.html">Graphical summaries</a>
+      <a href="DescribeData.html">Descriptive Summaries</a>
     </li>
     <li>
       <a href="model_diagnostics.html">Model diagnostics</a>
@@ -420,7 +421,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Datasets
      
     <span class="caret"></span>
@@ -461,21 +462,47 @@ $(document).ready(function () {
 <h3>Treatment Means</h3>
 <p>In the following explanations</p>
 <ul>
-<li><code>Y</code> must be a “numeric” vector of the quantitative response variable.</li>
-<li><code>X</code> is a qualitative variable. It would represent a treatment factor.</li>
+<li><code>Y</code> must be a “numeric” vector of the quantitative
+response variable.</li>
+<li><code>X</code> is a qualitative variable. It would represent a
+treatment factor.</li>
 <li><code>YourDataSet</code> is the name of your data set.</li>
 </ul>
-<p>You can take a tidyverse approach or a mosaic package approach to calculating numerical summaries for each treatment.</p>
+<p>You can take a tidyverse approach or a mosaic package approach to
+calculating numerical summaries for each treatment.</p>
 <div id="mosaic-package" class="section level4">
 <h4>mosaic package:</h4>
 <p>Calculating treatment means for <strong>one factor</strong>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(mosaic)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(pander)</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">favstats</span>(Y<span class="op">~</span>X, <span class="dt">data=</span>YourDataSet)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(Y<span class="sc">~</span>X, <span class="at">data=</span>YourDataSet)</span></code></pre></div>
 <p>Example code:</p>
 <a href="javascript:showhide('mosaic_mean')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(mosaic) <span class="tooltiprtext">mosaic is an R Package that is useful in the teaching of statistics to beginning programmers.</span> </span><br><span class="tooltipr"> library(pander) <span class="tooltiprtext">pander is an R Package that makes R output look pretty</span> </span><br><span class="tooltipr"> favstats( <span class="tooltipRtext">a function from the mosaic package that returns a set of favorite summary statistics</span> </span><span class="tooltipr"> Temp <span class="tooltipRtext">This is our response variable. From <code>?airquality</code> you can see in the help file that Temp is the maximum daily temp in degrees F at La Gaurdia Aiport during 1973</span> </span><span class="tooltipr"> ~ <span class="tooltipRtext">“~” is the tilde symbol. It can be interpreted as “y broken down by x”; “y modeled by x”; “y explained by x”, etc. Where y is on the left of the tilde and x is on the right. </span> </span><span class="tooltipr"> Month, <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> data = airquality <span class="tooltiprtext">You have to tell R what dataset the variables Temp and Month come from. ‘airquality’ is a preloaded dataset in R. </span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr" style="float:right;">  Click to view output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(mosaic) <span
+class="tooltiprtext">mosaic is an R Package that is useful in the
+teaching of statistics to beginning programmers.</span> </span><br><span
+class="tooltipr"> library(pander) <span class="tooltiprtext">pander is
+an R Package that makes R output look pretty</span> </span><br><span
+class="tooltipr"> favstats( <span class="tooltipRtext">a function from
+the mosaic package that returns a set of favorite summary
+statistics</span> </span><span class="tooltipr"> Temp <span
+class="tooltipRtext">This is our response variable. From
+<code>?airquality</code> you can see in the help file that Temp is the
+maximum daily temp in degrees F at La Gaurdia Aiport during 1973</span>
+</span><span class="tooltipr"> ~ <span class="tooltipRtext">“~” is the
+tilde symbol. It can be interpreted as “y broken down by x”; “y modeled
+by x”; “y explained by x”, etc. Where y is on the left of the tilde and
+x is on the right. </span> </span><span class="tooltipr"> Month, <span
+class="tooltiprtext">“Month” is a column from the airquality dataset
+that can be treated as qualitative.</span> </span><span
+class="tooltipr"> data = airquality <span class="tooltiprtext">You have
+to tell R what dataset the variables Temp and Month come from.
+‘airquality’ is a preloaded dataset in R. </span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr"
+style="float:right;">  Click to view output  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="mosaic_mean" style="display:none;">
@@ -487,16 +514,52 @@ $(document).ready(function () {
 ## 5     9  63 71.0     76 81.00  93 76.90000 8.355671 30       0</code></pre>
 </div>
 <p><br></p>
-<p>When calculating treatment <strong>means for combinations of 2 or more factors</strong> you can use <code>+</code> or <code>|</code> to separate the factors. <code>|</code> (read as ‘vertical bar’ or ‘pipe’) has the advantage that in addition to calculating means for every factor level combination, favstats will also output the marginal means for each level of the last factor listed.</p>
-<p><em>NOTE:</em> unlike it’s use in the <code>aov()</code> command, using the <code>*</code> within favstats does not yield expected results and should NOT be used.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(mosaic)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">favstats</span>(Y <span class="op">~</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span>Z, <span class="dt">data =</span> YourDataSet) </span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#OR</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">favstats</span>(Y <span class="op">~</span><span class="st"> </span>X <span class="op">|</span><span class="st"> </span>Z, <span class="dt">data =</span> YourDataSet)</span></code></pre></div>
+<p>When calculating treatment <strong>means for combinations of 2 or
+more factors</strong> you can use <code>+</code> or <code>|</code> to
+separate the factors. <code>|</code> (read as ‘vertical bar’ or ‘pipe’)
+has the advantage that in addition to calculating means for every factor
+level combination, favstats will also output the marginal means for each
+level of the last factor listed.</p>
+<p><em>NOTE:</em> unlike it’s use in the <code>aov()</code> command,
+using the <code>*</code> within favstats does not yield expected results
+and should NOT be used.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(Y <span class="sc">~</span> X <span class="sc">+</span> Z, <span class="at">data =</span> YourDataSet) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#OR</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(Y <span class="sc">~</span> X <span class="sc">|</span> Z, <span class="at">data =</span> YourDataSet)</span></code></pre></div>
 <p>Example code:</p>
 <a href="javascript:showhide('favstats_plus')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(mosaic) <span class="tooltiprtext">mosaic is an R Package that is useful in the teaching of statistics to beginning programmers.</span> </span><br><span class="tooltipr"> favstats( <span class="tooltipRtext">a function from the mosaic package that returns a set of favorite summary statistics</span> </span><span class="tooltipr"> mpg <span class="tooltipRtext">This is a quantitative variable (numerical vector) from the mtcars dataset</span> </span><span class="tooltipr"> ~ <span class="tooltipRtext">“~” is the tilde symbol. It can be interpreted as “y broken down by x”; “y modeled by x”; “y explained by x”, etc. Where y is on the left of the tilde and x variables are on the right. </span> </span><span class="tooltipr"> am <span class="tooltiprtext">A qualitative variable from the mtcars dataset. It is coded as 0 and 1 and so therefore is treated as numeric. That is a key distinction when creating the model, but it does not matter when calling favstats().</span> </span><span class="tooltipr"> + <span class="tooltiprtext">This allows us to create additional subgroups within ‘am’ for each level of ‘cyl’.</span> </span><span class="tooltipr"> cyl, <span class="tooltiprtext">A variable from the mtcars dataset with 3 distinct values: 4, 6, and 8. Though it is a numeric column we want to treat it as a factor. This is a key distinction when creating the model, but it does not matter when calling favstats().</span> </span><span class="tooltipr"> data = mtcars <span class="tooltiprtext">You have to tell R what dataset the variables ‘mpg’, ‘am’, and ‘cyl’ come from. ‘mtcars’ is a preloaded dataset in R. </span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr" style="float:right;">  Click to view output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(mosaic) <span
+class="tooltiprtext">mosaic is an R Package that is useful in the
+teaching of statistics to beginning programmers.</span> </span><br><span
+class="tooltipr"> favstats( <span class="tooltipRtext">a function from
+the mosaic package that returns a set of favorite summary
+statistics</span> </span><span class="tooltipr"> mpg <span
+class="tooltipRtext">This is a quantitative variable (numerical vector)
+from the mtcars dataset</span> </span><span class="tooltipr"> ~ <span
+class="tooltipRtext">“~” is the tilde symbol. It can be interpreted as
+“y broken down by x”; “y modeled by x”; “y explained by x”, etc. Where y
+is on the left of the tilde and x variables are on the right. </span>
+</span><span class="tooltipr"> am <span class="tooltiprtext">A
+qualitative variable from the mtcars dataset. It is coded as 0 and 1 and
+so therefore is treated as numeric. That is a key distinction when
+creating the model, but it does not matter when calling
+favstats().</span> </span><span class="tooltipr"> + <span
+class="tooltiprtext">This allows us to create additional subgroups
+within ‘am’ for each level of ‘cyl’.</span> </span><span
+class="tooltipr"> cyl, <span class="tooltiprtext">A variable from the
+mtcars dataset with 3 distinct values: 4, 6, and 8. Though it is a
+numeric column we want to treat it as a factor. This is a key
+distinction when creating the model, but it does not matter when calling
+favstats().</span> </span><span class="tooltipr"> data = mtcars <span
+class="tooltiprtext">You have to tell R what dataset the variables
+‘mpg’, ‘am’, and ‘cyl’ come from. ‘mtcars’ is a preloaded dataset in R.
+</span> </span><span class="tooltipr"> ) <span
+class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr" style="float:right;">
+ Click to view output  <span class="tooltiprtext">Click to View
+Output.</span> </span></p>
 </div>
 </a>
 <div id="favstats_plus" style="display:none;">
@@ -509,11 +572,48 @@ $(document).ready(function () {
 ## 6    1.8 15.0 15.200  15.40 15.600 15.8 15.40000 0.5656854  2       0</code></pre>
 </div>
 <p><br></p>
-<p>Notice that the first column in the output contains the factor level combinations of <code>am</code> and <code>cyl</code>. So, ‘0.4’ is interpreted as level 0 for <code>am</code> and level 4 for <code>cyl</code>. Or in other words, the summary statistics on that row are for automatic tranmission, 4 cylinder engine vehicles. The column label of ‘am.cyl’ indicates which factor is represented on which side of the period. The next example uses the same way of labeling the factor level combinations, but the column label is not as intuitive or helpful.</p>
+<p>Notice that the first column in the output contains the factor level
+combinations of <code>am</code> and <code>cyl</code>. So, ‘0.4’ is
+interpreted as level 0 for <code>am</code> and level 4 for
+<code>cyl</code>. Or in other words, the summary statistics on that row
+are for automatic tranmission, 4 cylinder engine vehicles. The column
+label of ‘am.cyl’ indicates which factor is represented on which side of
+the period. The next example uses the same way of labeling the factor
+level combinations, but the column label is not as intuitive or
+helpful.</p>
 <p><br></p>
 <a href="javascript:showhide('favstats_bar')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(mosaic) <span class="tooltiprtext">mosaic is an R Package that is useful in the teaching of statistics to beginning programmers.</span> </span><br><span class="tooltipr"> favstats( <span class="tooltipRtext">a function from the mosaic package that returns a set of favorite summary statistics</span> </span><span class="tooltipr"> mpg <span class="tooltipRtext">This is a quantitative variable (numerical vector) from the mtcars dataset</span> </span><span class="tooltipr"> ~ <span class="tooltipRtext">“~” is the tilde symbol. It can be interpreted as “y broken down by x”; “y modeled by x”; “y explained by x”, etc. Where y is on the left of the tilde and x variables are on the right. </span> </span><span class="tooltipr"> am <span class="tooltiprtext">A qualitative variable from the mtcars dataset. It is coded as 0 and 1 and so therefore is treated as numeric. That is a key distinction when creating the model, but it does not matter when calling favstats().</span> </span><span class="tooltipr"> | <span class="tooltiprtext">Referred to as a vertical bar or pipe, this symbol further defines subgroups of the variable on its left, using the values of the variable on its right side </span> </span><span class="tooltipr"> cyl, <span class="tooltiprtext">A variable from the mtcars dataset with 3 distinct values: 4, 6, and 8. Though it is a numeric column we want to treat it as a factor. This is a key distinction when creating the model, but it does not matter when calling favstats().</span> </span><span class="tooltipr"> data = mtcars <span class="tooltiprtext">You have to tell R what dataset the variables ‘mpg’, ‘am’, and ‘cyl’ come from. ‘mtcars’ is a preloaded dataset in R. </span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr" style="float:right;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(mosaic) <span
+class="tooltiprtext">mosaic is an R Package that is useful in the
+teaching of statistics to beginning programmers.</span> </span><br><span
+class="tooltipr"> favstats( <span class="tooltipRtext">a function from
+the mosaic package that returns a set of favorite summary
+statistics</span> </span><span class="tooltipr"> mpg <span
+class="tooltipRtext">This is a quantitative variable (numerical vector)
+from the mtcars dataset</span> </span><span class="tooltipr"> ~ <span
+class="tooltipRtext">“~” is the tilde symbol. It can be interpreted as
+“y broken down by x”; “y modeled by x”; “y explained by x”, etc. Where y
+is on the left of the tilde and x variables are on the right. </span>
+</span><span class="tooltipr"> am <span class="tooltiprtext">A
+qualitative variable from the mtcars dataset. It is coded as 0 and 1 and
+so therefore is treated as numeric. That is a key distinction when
+creating the model, but it does not matter when calling
+favstats().</span> </span><span class="tooltipr"> | <span
+class="tooltiprtext">Referred to as a vertical bar or pipe, this symbol
+further defines subgroups of the variable on its left, using the values
+of the variable on its right side </span> </span><span class="tooltipr">
+cyl, <span class="tooltiprtext">A variable from the mtcars dataset with
+3 distinct values: 4, 6, and 8. Though it is a numeric column we want to
+treat it as a factor. This is a key distinction when creating the model,
+but it does not matter when calling favstats().</span> </span><span
+class="tooltipr"> data = mtcars <span class="tooltiprtext">You have to
+tell R what dataset the variables ‘mpg’, ‘am’, and ‘cyl’ come from.
+‘mtcars’ is a preloaded dataset in R. </span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr"
+style="float:right;">  Click to View Output  <span
+class="tooltiprtext">Click to View Output.</span> </span></p>
 </div>
 </a>
 <div id="favstats_bar" style="display:none;">
@@ -533,14 +633,49 @@ $(document).ready(function () {
 <div id="tidyverse-approach" class="section level4">
 <h4>tidyverse approach</h4>
 <p>Calculating treatment means for <strong>one factor</strong>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>YourDataSet <span class="op">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="st">  </span><span class="kw">Group_by</span>(X) <span class="op">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="st">  </span><span class="kw">Summarise</span>(<span class="dt">MeanY =</span> <span class="kw">mean</span>(Y), <span class="dt">sdY =</span> <span class="kw">sd</span>(Y), <span class="dt">sampleSize =</span> <span class="kw">n</span>()) </span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>YourDataSet <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Group_by</span>(X) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Summarise</span>(<span class="at">MeanY =</span> <span class="fu">mean</span>(Y), <span class="at">sdY =</span> <span class="fu">sd</span>(Y), <span class="at">sampleSize =</span> <span class="fu">n</span>()) </span></code></pre></div>
 <a href="javascript:showhide('mean3')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> airquality <span class="tooltipRtext"><code>airquality</code> is a dataset in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the airquality dataset into “little” datasets, one dataset for each value in the “Month” column.</span> </span><span class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column from the airquality dataset that can be treated as qualitative.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> aveTemp =  <span class="tooltiprtext">“AveTemp” is just a name we made up. It will contain the results of the mean(…) function.</span> </span><span class="tooltipr"> mean( <span class="tooltiprtext">“mean” is an R function used to calculate the mean.</span> </span><span class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative variable (numeric vector) from the airquality dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> airquality
+<span class="tooltipRtext"><code>airquality</code> is a dataset in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>airquality</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the airquality dataset into “little” datasets,
+one dataset for each value in the “Month” column.</span> </span><span
+class="tooltipr"> Month <span class="tooltiprtext">“Month” is a column
+from the airquality dataset that can be treated as qualitative.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator
+that will send the grouped version of the <code>airquality</code>
+dataset down inside of the code on the following line.</span>
+</span><br/><span class="tooltipr">    summarise( <span
+class="tooltipRtext">“summarise” is a function from library(tidyverse)
+that allows us to compute numerical summaries on data.</span>
+</span><span class="tooltipr"> aveTemp =  <span
+class="tooltiprtext">“AveTemp” is just a name we made up. It will
+contain the results of the mean(…) function.</span> </span><span
+class="tooltipr"> mean( <span class="tooltiprtext">“mean” is an R
+function used to calculate the mean.</span> </span><span
+class="tooltipr"> Temp <span class="tooltiprtext">Temp is a quantitative
+variable (numeric vector) from the airquality dataset.</span>
+</span><span class="tooltipr"> ) <span class="tooltiprtext">Functions
+must always end with a closing parenthesis.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr">
+    <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  Click to View
+Output  <span class="tooltiprtext">Click to View Output.</span>
+</span></p>
 </div>
 </a>
 <div id="mean3" style="display:none;">
@@ -578,9 +713,12 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>Note that R calculated the mean <code>Temp</code> for each month in <code>Month</code> from the <code>airquality</code> dataset.</p>
-<p>May (5), June (6), July (7), August (8), and September (9), respectively.</p>
-<p>Further, note that to get the “nicely formatted” table, you would have to use</p>
+<p>Note that R calculated the mean <code>Temp</code> for each month in
+<code>Month</code> from the <code>airquality</code> dataset.</p>
+<p>May (5), June (6), July (7), August (8), and September (9),
+respectively.</p>
+<p>Further, note that to get the “nicely formatted” table, you would
+have to use</p>
 <pre><code>library(pander)
 airquality %&gt;% 
   group_by(Month) %&gt;%
@@ -588,12 +726,49 @@ airquality %&gt;%
   pander()</code></pre>
 </div>
 <p><br></p>
-<p>To calculate treatment means for each combination of factor levels of <strong>2 or more factors</strong>, simply add the additional variable to the <code>group_by()</code> statement.</p>
+<p>To calculate treatment means for each combination of factor levels of
+<strong>2 or more factors</strong>, simply add the additional variable
+to the <code>group_by()</code> statement.</p>
 <p>Example code:</p>
 <a href="javascript:showhide('mean_tidy2')">
 <div class="hoverchunk">
-<p><span class="tooltipr"> library(tidyverse) <span class="tooltiprtext">tidyverse is an R Package that is very useful for working with data.</span> </span><br><span class="tooltipr"> mpg <span class="tooltipRtext"><code>mtcars</code> is a dataset in preloaded in R.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the <code>mtcars</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    group_by( <span class="tooltipRtext">“group_by” is a function from library(tidyverse) that allows us to split the mtcars dataset into “little” datasets, one dataset for each combination of values in the ‘am’ and ‘cyl’ variables</span> </span><span class="tooltipr"> am, cyl <span class="tooltiprtext">‘am’ and ‘cyl’ are both columns in mtcars. By listing them both here we are going to get output for each combination of ‘am’ and ‘cyl’ that exists in the dataset</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">  %&gt;%  <span class="tooltipRtext">The pipe operator that will send the grouped version of the <code>airquality</code> dataset down inside of the code on the following line.</span> </span><br/><span class="tooltipr">    summarise( <span class="tooltipRtext">“summarise” is a function from library(tidyverse) that allows us to compute numerical summaries on data.</span> </span><span class="tooltipr"> mean_mpg =  <span class="tooltiprtext">“mean_mpg” is just a name we made up. It will contain the results of the mean(…) function.</span> </span><span class="tooltipr"> mean( <span class="tooltiprtext">“mean” is an R function used to calculate the mean.</span> </span><span class="tooltipr"> mpg <span class="tooltiprtext">mpg is a quantitative variable (numeric vector) from the mtcars dataset.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr"> ) <span class="tooltiprtext">Functions must always end with a closing parenthesis.</span> </span><span class="tooltipr">     <br />
-<span class="tooltiprtext">Press Enter to run the code.</span> </span><span class="tooltipr" style="float:right;">  Click to View Output  <span class="tooltiprtext">Click to View Output.</span> </span></p>
+<p><span class="tooltipr"> library(tidyverse) <span
+class="tooltiprtext">tidyverse is an R Package that is very useful for
+working with data.</span> </span><br><span class="tooltipr"> mpg <span
+class="tooltipRtext"><code>mtcars</code> is a dataset in preloaded in
+R.</span> </span><span class="tooltipr">  %&gt;%  <span
+class="tooltipRtext">The pipe operator that will send the
+<code>mtcars</code> dataset down inside of the code on the following
+line.</span> </span><br/><span class="tooltipr">    group_by( <span
+class="tooltipRtext">“group_by” is a function from library(tidyverse)
+that allows us to split the mtcars dataset into “little” datasets, one
+dataset for each combination of values in the ‘am’ and ‘cyl’
+variables</span> </span><span class="tooltipr"> am, cyl <span
+class="tooltiprtext">‘am’ and ‘cyl’ are both columns in mtcars. By
+listing them both here we are going to get output for each combination
+of ‘am’ and ‘cyl’ that exists in the dataset</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr">
+ %&gt;%  <span class="tooltipRtext">The pipe operator that will send the
+grouped version of the <code>airquality</code> dataset down inside of
+the code on the following line.</span> </span><br/><span
+class="tooltipr">    summarise( <span class="tooltipRtext">“summarise”
+is a function from library(tidyverse) that allows us to compute
+numerical summaries on data.</span> </span><span class="tooltipr">
+mean_mpg =  <span class="tooltiprtext">“mean_mpg” is just a name we made
+up. It will contain the results of the mean(…) function.</span>
+</span><span class="tooltipr"> mean( <span class="tooltiprtext">“mean”
+is an R function used to calculate the mean.</span> </span><span
+class="tooltipr"> mpg <span class="tooltiprtext">mpg is a quantitative
+variable (numeric vector) from the mtcars dataset.</span> </span><span
+class="tooltipr"> ) <span class="tooltiprtext">Functions must always end
+with a closing parenthesis.</span> </span><span class="tooltipr"> )
+<span class="tooltiprtext">Functions must always end with a closing
+parenthesis.</span> </span><span class="tooltipr">     <br />
+<span class="tooltiprtext">Press Enter to run the code.</span>
+</span><span class="tooltipr" style="float:right;">  Click to View
+Output  <span class="tooltiprtext">Click to View Output.</span>
+</span></p>
 </div>
 </a>
 <div id="mean_tidy2" style="display:none;">
@@ -655,6 +830,9 @@ airquality %&gt;%
 </div>
 <div id="graphical-summaries" class="section level2">
 <h2>Graphical Summaries</h2>
+<p>I’m thinking of boxplot, a scatter/jitter plot with means connected
+by a line, and an interaction plot. Try to decide the degree to teach
+base R vs. ggplot.</p>
 </div>
 
 

@@ -41,8 +41,8 @@ navbar:
       menu:
         - text: "ANOVA Model and Assumptions"
           href: anova_basics.html
-        - text: "Contrasts"
-          href: tTests.html
+        - text: "quarto experiment"
+          href: junko.html
         - text: "Extending the Basic Designs"
           href: LogisticRegression.html
         - text: "Notation"

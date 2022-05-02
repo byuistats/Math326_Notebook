@@ -13,7 +13,8 @@
 
 <title>Randomized, Basic Factorial Experiments</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -29,7 +30,6 @@
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -43,6 +43,7 @@
     </style>
 
 
+
 <style type="text/css">
   code {
     white-space: pre;
@@ -52,19 +53,19 @@
   }
 </style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -165,6 +166,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -317,7 +321,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -327,7 +331,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Foundations of Experimental Design
      
     <span class="caret"></span>
@@ -348,7 +352,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Specific Designs
      
     <span class="caret"></span>
@@ -369,7 +373,7 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Broad Topics
      
     <span class="caret"></span>
@@ -379,7 +383,7 @@ $(document).ready(function () {
       <a href="anova_basics.html">ANOVA Model and Assumptions</a>
     </li>
     <li>
-      <a href="tTests.html">Contrasts</a>
+      <a href="junko.html">quarto experiment</a>
     </li>
     <li>
       <a href="LogisticRegression.html">Extending the Basic Designs</a>
@@ -402,17 +406,14 @@ $(document).ready(function () {
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     R Instructions
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="numerical_summaries.html">Numerical summaries</a>
-    </li>
-    <li>
-      <a href="graphical_summaries.html">Graphical summaries</a>
+      <a href="DescribeData.html">Descriptive Summaries</a>
     </li>
     <li>
       <a href="model_diagnostics.html">Model diagnostics</a>
@@ -422,7 +423,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Datasets
      
     <span class="caret"></span>
@@ -445,49 +446,88 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Randomized, Basic Factorial Experiments</h1>
+<h1 class="title toc-ignore">Randomized, Basic Factorial
+Experiments</h1>
 
 </div>
 
 
 <hr />
-<p>The experimental designs in this section have 2 key characteristics in common:</p>
+<p>The experimental designs in this section have 2 key characteristics
+in common:</p>
 <ul>
-<li>Conditions are assigned to subjects (a.k.a. experimental units) completely at random</li>
-<li>The way error is accounted for in all these designs and the way the requirements are checked can be approached the same way</li>
+<li>Conditions are assigned to subjects (a.k.a. experimental units)
+completely at random</li>
+<li>The way error is accounted for in all these designs and the way the
+requirements are checked can be approached the same way</li>
 </ul>
-<p>To assign something <strong>completely at random</strong> means that each experimental unit has a known and equal chance of being selected for a particular treatment and that no other considerations are taken into account when making treatment assignments. Usually, for balance, the same number of units are assigned to each treatment. For example, if I have 4 treatment and 16 units, I may use a computer to randomly shuffle the units into treatment groups.</p>
-<p>Factorial experiments involve two or more factors that are crossed. <strong>Factorial crossing</strong> means that each combination of factor levels is considered as a treatment in the study. (A study with just one factor is not technically a factorial design, but we will lump it in with our discussion of factorial experiments her because of the completely random treatment assignment).</p>
-<p>Contrast a factorial design with the one-at-a-time approach. In a one-at-a-time approach, if I had two factors I wanted to study I would run two separate experiments to evaluate the effect of each factor on the response one-at-time. Factorial designs have a couple of major advantages over one-factor-at-a-time studies.</p>
+<p>To assign something <strong>completely at random</strong> means that
+each experimental unit has a known and equal chance of being selected
+for a particular treatment and that no other considerations are taken
+into account when making treatment assignments. Usually, for balance,
+the same number of units are assigned to each treatment. For example, if
+I have 4 treatment and 16 units, I may use a computer to randomly
+shuffle the units into treatment groups.</p>
+<p>Factorial experiments involve two or more factors that are crossed.
+<strong>Factorial crossing</strong> means that each combination of
+factor levels is considered as a treatment in the study. (A study with
+just one factor is not technically a factorial design, but we will lump
+it in with our discussion of factorial experiments her because of the
+completely random treatment assignment).</p>
+<p>Contrast a factorial design with the one-at-a-time approach. In a
+one-at-a-time approach, if I had two factors I wanted to study I would
+run two separate experiments to evaluate the effect of each factor on
+the response one-at-time. Factorial designs have a couple of major
+advantages over one-factor-at-a-time studies.</p>
 <ol style="list-style-type: decimal">
-<li>They are a more efficient use of our time and material: I can get information about both of my factors from just one experimental unit</li>
-<li>Perhaps most importantly, factorial designs allow the researcher to estimate interaction effects. Or in other words, we can observe how one factor’s effect on the response variable changes for different levels of the other factor.</li>
+<li>They are a more efficient use of our time and material: I can get
+information about both of my factors from just one experimental
+unit</li>
+<li>Perhaps most importantly, factorial designs allow the researcher to
+estimate interaction effects. Or in other words, we can observe how one
+factor’s effect on the response variable changes for different levels of
+the other factor.</li>
 </ol>
 <p>EXAMPLE of BF2???</p>
-<p>In summary, “factorial” refers to how you determine which treatments will be included in the study, and “completely randomized” refers to how treatments are assigned to subjects.</p>
+<p>In summary, “factorial” refers to how you determine which treatments
+will be included in the study, and “completely randomized” refers to how
+treatments are assigned to subjects.</p>
 <hr />
 <div id="bf1" class="section level2 tabset tabset-fade tabset-pills">
-<h2>BF[1]</h2>
+<h2 class="tabset tabset-fade tabset-pills">BF[1]</h2>
 <p>A study with just one factor</p>
 <div id="overview" class="section level3">
 <h3>Overview</h3>
-<p>In a basic one-way factorial design (BF[1]), only one factor is purposefully varied. Each level of the factor is considered a treatment. Each experimental unit is randomly assigned to exactly one treatment.</p>
+<p>In a basic one-way factorial design (BF[1]), only one factor is
+purposefully varied. Each level of the factor is considered a treatment.
+Each experimental unit is randomly assigned to exactly one
+treatment.</p>
 <div id="factor-structure" class="section level4">
 <h4>Factor structure</h4>
-<p>The factor structure for the model resulting from a completely randomized, one factor with design is:</p>
+<p>The factor structure for the model resulting from a completely
+randomized, one factor with design is:</p>
 <p><img src="images/BF1_factor_structure_with_equation.PNG" /></p>
-<p>The above diagram illustrates a factor with 4 levels, 6 replications at each level.</p>
+<p>The above diagram illustrates a factor with 4 levels, 6 replications
+at each level.</p>
 </div>
 <div id="hypotheses-and-model" class="section level4">
 <h4>Hypotheses and model</h4>
-<p>A more detailed description of the model for an ANOVA with just one factor:</p>
+<p>A more detailed description of the model for an ANOVA with just one
+factor:</p>
 <p><span class="math display">\[
 y_{ij} = \mu + \alpha_i + \epsilon_{ij}
 \]</span></p>
-<p><span class="math inline">\(y_{ij}\)</span>: the <span class="math inline">\(j^{th}\)</span> observation from treatment <span class="math inline">\(i\)</span></p>
-<p><span class="math inline">\(\mu\)</span>: the grand mean of the dataset. Also referred to as an overall mean or benchmark.</p>
-<p><span class="math inline">\(\alpha_i\)</span>: effect of treatment <span class="math inline">\(i\)</span></p>
-<p><span class="math inline">\(\epsilon_{ik}\)</span>: the error term, or residual term of the model. There are <em>j</em> replicates for each treatment. It represents the distance from an observation to its treatment mean (or predicted value).</p>
+<p><span class="math inline">\(y_{ij}\)</span>: the <span
+class="math inline">\(j^{th}\)</span> observation from treatment <span
+class="math inline">\(i\)</span></p>
+<p><span class="math inline">\(\mu\)</span>: the grand mean of the
+dataset. Also referred to as an overall mean or benchmark.</p>
+<p><span class="math inline">\(\alpha_i\)</span>: effect of treatment
+<span class="math inline">\(i\)</span></p>
+<p><span class="math inline">\(\epsilon_{ik}\)</span>: the error term,
+or residual term of the model. There are <em>j</em> replicates for each
+treatment. It represents the distance from an observation to its
+treatment mean (or predicted value).</p>
 <p>The null and alternative hypotheses can be expressed as:</p>
 <p><span class="math display">\[
 H_o: \alpha_1 = \alpha_2 = ... = 0
@@ -497,19 +537,34 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 </div>
 <div id="assumptions" class="section level4">
 <h4>Assumptions</h4>
-<p>A one-way ANOVA model may be used to analyze data from a BF[1] design if the following requirements are satisfied:</p>
+<p>A one-way ANOVA model may be used to analyze data from a BF[1] design
+if the following requirements are satisfied:</p>
 <ol style="list-style-type: decimal">
-<li>Each experimental unit is randomly assigned to only 1 treatment (or factor level)</li>
-<li>The error term of the model (<span class="math inline">\(\epsilon_{ik}\)</span>) is normally distributed. This assumption is met when the residuals are normally distributed (as seen in a qq-plot).</li>
-<li>The population variance of each group is equal. This is often called the homogeneity of variance, or constant variance assumption. This is considered met when each group of residuals in the residual vs. fitted-values plot shows a similar vertical spread.</li>
+<li>Each experimental unit is randomly assigned to only 1 treatment (or
+factor level)</li>
+<li>The error term of the model (<span
+class="math inline">\(\epsilon_{ik}\)</span>) is normally distributed.
+This assumption is met when the residuals are normally distributed (as
+seen in a qq-plot).</li>
+<li>The population variance of each group is equal. This is often called
+the homogeneity of variance, or constant variance assumption. This is
+considered met when each group of residuals in the residual
+vs. fitted-values plot shows a similar vertical spread.</li>
 </ol>
 <hr />
 </div>
 </div>
 <div id="design" class="section level3">
 <h3>Design</h3>
-<p>In a one factor design, one factor is purposefully varied and all other factors are controlled in order to isolate the effect of just the factor under study. Each level of the factor is considered a treatment.</p>
-<p>In a completely randomized design, each experimental unit is randomly assigned to exactly 1 treatment. It is common to keep the number of units assigned to each treatment the same to ensure balance. This can be done by listing all the subjects, then listing the treatments, as seen below:</p>
+<p>In a one factor design, one factor is purposefully varied and all
+other factors are controlled in order to isolate the effect of just the
+factor under study. Each level of the factor is considered a
+treatment.</p>
+<p>In a completely randomized design, each experimental unit is randomly
+assigned to exactly 1 treatment. It is common to keep the number of
+units assigned to each treatment the same to ensure balance. This can be
+done by listing all the subjects, then listing the treatments, as seen
+below:</p>
 <table>
 <thead>
 <tr class="header">
@@ -551,7 +606,11 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 </tr>
 </tbody>
 </table>
-<p>Then you randomly shuffle the treatment column. (You should also be paying attention to the order in which subjects and treatments are being experimented on as this could be a potential source of bias. In a BF[1], you randomize the order also.) The result might look something like this.</p>
+<p>Then you randomly shuffle the treatment column. (You should also be
+paying attention to the order in which subjects and treatments are being
+experimented on as this could be a potential source of bias. In a BF[1],
+you randomize the order also.) The result might look something like
+this.</p>
 <table>
 <thead>
 <tr class="header">
@@ -593,12 +652,34 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 </tr>
 </tbody>
 </table>
-<p>You may notice in the above example that, even with randomization, treatment C occurs in the last 2 observations. If we were truly concerned about the order we could be more strategic and implement a <em>blocked design</em> to prevent “unlucky” ordering and pairing.</p>
-<p>Consider the following example. An experiment was done to asses different modes of virtual training in how to launch a lifeboat. Sixteen students in the maritime safety training institute were a part of the study, and each of the students were assigned one of four possible virtual training experiences. The four experiences included: Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor Display/Joypad (3), and Head Monitor Display/Wearables (4). The response variable was the student’s performance on a procedural knowledge assessment (performance is defined as their level of improvement from pre to post test).</p>
-<p>To obtain a balanced design, we will want each treatment to be assigned to four students. We could get 16 pieces of paper and write “Treatment 1” on 4 pieces, “Treatment 2” on another 4 pieces, and so on until each treatment has 4 pieces of paper. We could then put them in a hat, mix them up and then randomly draw out a piece of paper to assign it to a subject. Intuitively this makes sense, but writing and cutting paper is slow and inefficient. We could implement a similar process in R to assign treatments.</p>
-<p>First, we list all the possible treatments, and repeat that listing until it is the same size as our count of subjects. (Note, if your number of subjects is not an exact multiple of the number of treatments, you may need to decide which treatments deserve fewer observations)</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>treatment_list &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">4</span>) <span class="co">#This repeats the sequence of 1 to 4, four times</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>treatment_list</span></code></pre></div>
+<p>You may notice in the above example that, even with randomization,
+treatment C occurs in the last 2 observations. If we were truly
+concerned about the order we could be more strategic and implement a
+<em>blocked design</em> to prevent “unlucky” ordering and pairing.</p>
+<p>Consider the following example. An experiment was done to asses
+different modes of virtual training in how to launch a lifeboat. Sixteen
+students in the maritime safety training institute were a part of the
+study, and each of the students were assigned one of four possible
+virtual training experiences. The four experiences included:
+Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor
+Display/Joypad (3), and Head Monitor Display/Wearables (4). The response
+variable was the student’s performance on a procedural knowledge
+assessment (performance is defined as their level of improvement from
+pre to post test).</p>
+<p>To obtain a balanced design, we will want each treatment to be
+assigned to four students. We could get 16 pieces of paper and write
+“Treatment 1” on 4 pieces, “Treatment 2” on another 4 pieces, and so on
+until each treatment has 4 pieces of paper. We could then put them in a
+hat, mix them up and then randomly draw out a piece of paper to assign
+it to a subject. Intuitively this makes sense, but writing and cutting
+paper is slow and inefficient. We could implement a similar process in R
+to assign treatments.</p>
+<p>First, we list all the possible treatments, and repeat that listing
+until it is the same size as our count of subjects. (Note, if your
+number of subjects is not an exact multiple of the number of treatments,
+you may need to decide which treatments deserve fewer observations)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>treatment_list <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">4</span>) <span class="co">#This repeats the sequence of 1 to 4, four times</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>treatment_list</span></code></pre></div>
 <pre><code>##  [1] 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4</code></pre>
 <p>Here it is reformatted in a easy to read table.</p>
 <table>
@@ -675,11 +756,13 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 </tr>
 </tbody>
 </table>
-<p>Then we randomly shuffle treatments with subjects to get the following assignments. The R code could look like this</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">set.seed</span>(<span class="dv">17</span>) <span class="co">#only use this if you want the exact same random selection as this example</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">sample</span>(treatment_list, <span class="dv">16</span>)</span></code></pre></div>
+<p>Then we randomly shuffle treatments with subjects to get the
+following assignments. The R code could look like this</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">17</span>) <span class="co">#only use this if you want the exact same random selection as this example</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(treatment_list, <span class="dv">16</span>)</span></code></pre></div>
 <pre><code>##  [1] 2 4 1 4 3 1 3 2 2 2 4 3 4 1 3 1</code></pre>
-<p>We can see here that subject 1 should get treatment 2. Subject 2 gets treatment 4, Subject 3 gets treatment 1 and so on.</p>
+<p>We can see here that subject 1 should get treatment 2. Subject 2 gets
+treatment 4, Subject 3 gets treatment 1 and so on.</p>
 <table>
 <thead>
 <tr class="header">
@@ -758,114 +841,286 @@ H_a: \alpha_i \neq 0 \quad \text{for at least one }\ \alpha_i
 </div>
 <div id="decomposition-and-factor-structure" class="section level3">
 <h3>Decomposition and Factor Structure</h3>
-<p>This section serves as a bridge between the design and the analysis of an experiment. It is equivalent to doing the analysis by hand. The primary goal is to see how the design decisions impact the analysis; including a deeper understanding of what the numbers in an ANOVA table mean and how they are calculated.</p>
-<p>A factor structure for an experimental design can help provide an effective way to organize and plan for the type of data needed for an experiment. For a basic one-way factorial design, three factors are involved for the experiment: the benchmark (or grand mean), the treatment, and the residual error. For example, an experiment was done to help train people in the procedure to launch a lifeboat. This was a Basic One-way Factorial Design, one where the treatments included: Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor Display/Joypad (3), and Head Monitor Display/Wearables (4). The students were then given a pre-test before training and a post-test after training and the difference between the two scores was the measurement used from each student in the analysis. Therefore, we have four levels for the treatment with six replicates for each treatment (the actual study used 16 observations per treatment). The diagram below gives the factor structure of the design, and the accompanying mathematical model.</p>
+<p>This section serves as a bridge between the design and the analysis
+of an experiment. It is equivalent to doing the analysis by hand. The
+primary goal is to see how the design decisions impact the analysis;
+including a deeper understanding of what the numbers in an ANOVA table
+mean and how they are calculated.</p>
+<p>A factor structure for an experimental design can help provide an
+effective way to organize and plan for the type of data needed for an
+experiment. For a basic one-way factorial design, three factors are
+involved for the experiment: the benchmark (or grand mean), the
+treatment, and the residual error. For example, an experiment was done
+to help train people in the procedure to launch a lifeboat. This was a
+Basic One-way Factorial Design, one where the treatments included:
+Lecture/Materials (Control) (1), Monitor/Keyboard (2), Head Monitor
+Display/Joypad (3), and Head Monitor Display/Wearables (4). The students
+were then given a pre-test before training and a post-test after
+training and the difference between the two scores was the measurement
+used from each student in the analysis. Therefore, we have four levels
+for the treatment with six replicates for each treatment (the actual
+study used 16 observations per treatment). The diagram below gives the
+factor structure of the design, and the accompanying mathematical
+model.</p>
 <p><img src="images/BF1_factor_structure_with_equation.PNG" /></p>
-<p>A basic one-way factorial design has three factors: the benchmark, treatment, and residual. The effects of these factors can be summed together to find each observed value.</p>
+<p>A basic one-way factorial design has three factors: the benchmark,
+treatment, and residual. The effects of these factors can be summed
+together to find each observed value.</p>
 <ul>
-<li>The <strong>observed values</strong> on the left show that there are 24 distinct observations of performance score, represented by the 24 cells - one for each of the observed values.</li>
-<li>The <strong>benchmark</strong> represents the grand mean (or overall mean). The single large cell indicates that there is only one grand mean and it is part of every observation.<br />
+<li>The <strong>observed values</strong> on the left show that there are
+24 distinct observations of performance score, represented by the 24
+cells - one for each of the observed values.</li>
+<li>The <strong>benchmark</strong> represents the grand mean (or overall
+mean). The single large cell indicates that there is only one grand mean
+and it is part of every observation.<br />
 </li>
-<li>The <strong>treatment factor</strong> involves the four levels of the treatment represented by the four vertically long cells. Each treatment may have a distinct mean (or effect).</li>
-<li>The <strong>residual error</strong> represents the difference between the observed value and the predicted value. The predicted value, also called the fitted value, is the sum of the grand mean and treatment effect. Each of the cells represent a distinct value for the residual error.</li>
+<li>The <strong>treatment factor</strong> involves the four levels of
+the treatment represented by the four vertically long cells. Each
+treatment may have a distinct mean (or effect).</li>
+<li>The <strong>residual error</strong> represents the difference
+between the observed value and the predicted value. The predicted value,
+also called the fitted value, is the sum of the grand mean and treatment
+effect. Each of the cells represent a distinct value for the residual
+error.</li>
 </ul>
 <div id="inside-vs.-outside-factors" class="section level4">
 <h4>Inside vs. Outside Factors</h4>
-<p>Having a factor structure can help us determine the <strong>degrees of freedom</strong> and the <strong>effects</strong> of each factor. Before determining the degrees of freedom and the effects of each factor, understanding <strong>outside and inside factors</strong> is helpful.</p>
-<p>A factor is inside of another factor if all the levels of one factor (<strong>the inside factor</strong>) completely fits within a second factor (<strong>the outside factor</strong>).</p>
-<p>You may find this analogy helpful. Pretend that an outside factor is a box, and the inside factor levels are blocks that fit perfectly within the box.</p>
+<p>Having a factor structure can help us determine the <strong>degrees
+of freedom</strong> and the <strong>effects</strong> of each factor.
+Before determining the degrees of freedom and the effects of each
+factor, understanding <strong>outside and inside factors</strong> is
+helpful.</p>
+<p>A factor is inside of another factor if all the levels of one factor
+(<strong>the inside factor</strong>) completely fits within a second
+factor (<strong>the outside factor</strong>).</p>
+<p>You may find this analogy helpful. Pretend that an outside factor is
+a box, and the inside factor levels are blocks that fit perfectly within
+the box.</p>
 <center>
-<img src="images/wooden_blocks_in_box.jpg" width = 200px;> <!-- ![blocks in box](images/wooden_blocks_in_box.jpg) --> <!-- picture from: https://www.amazon.com/MOD-Complete-Extra-Large-Size/dp/B079J8PB73 -->
+<img src="images/wooden_blocks_in_box.jpg" width = 200px;>
+<!-- ![blocks in box](images/wooden_blocks_in_box.jpg) -->
+<!-- picture from: https://www.amazon.com/MOD-Complete-Extra-Large-Size/dp/B079J8PB73 -->
 </center>
-<p>In our basic one-way factorial design there are three factors: the benchmark, treatment, and residuals. In the picture below, benchmark is represented in red, treatment is drawn in blue, and the residual factor levels are depicted in black.</p>
+<p>In our basic one-way factorial design there are three factors: the
+benchmark, treatment, and residuals. In the picture below, benchmark is
+represented in red, treatment is drawn in blue, and the residual factor
+levels are depicted in black.</p>
 <p><img src="images/inside_outside_1.JPG" /></p>
-<p>In order to understand the relationship between the benchmark and treatment factor, imagine picking up the levels of factor and placing them in the other factor one at a time. We will start with taking the levels of treatment and placing them inside of the benchmark.</p>
+<p>In order to understand the relationship between the benchmark and
+treatment factor, imagine picking up the levels of factor and placing
+them in the other factor one at a time. We will start with taking the
+levels of treatment and placing them inside of the benchmark.</p>
 <p><img src="images/inside_outside_2.JPG" /></p>
-<p>In this picture you can see that one entire level of treatment can fit inside of a single level of benchmark. Even though they may share a boundary line, the level does not cross over and start sharing boundaries with any other level. You can repeat this for the other 3 levels of treatment with the same result. Therefore, we say that treatment is inside of benchmark, which is the same as saying that benchmark is outside of treatment.</p>
-<p>Consider now the relationship between treatment and residual. If we take a level of treatment and overlay it on the residual factor, we can see it does not fit neatly inside one of the levels of residual error. In fact, one level of treatment crosses the boundaries of many of the levels of residual error. Therefore, we cannot say that treatment is inside of residual error.</p>
+<p>In this picture you can see that one entire level of treatment can
+fit inside of a single level of benchmark. Even though they may share a
+boundary line, the level does not cross over and start sharing
+boundaries with any other level. You can repeat this for the other 3
+levels of treatment with the same result. Therefore, we say that
+treatment is inside of benchmark, which is the same as saying that
+benchmark is outside of treatment.</p>
+<p>Consider now the relationship between treatment and residual. If we
+take a level of treatment and overlay it on the residual factor, we can
+see it does not fit neatly inside one of the levels of residual error.
+In fact, one level of treatment crosses the boundaries of many of the
+levels of residual error. Therefore, we cannot say that treatment is
+inside of residual error.</p>
 <p><img src="images/inside_outside_3.JPG" /></p>
-<p>Since treatment is not inside of residual error, does this necessarily mean that treatment is outside of residual error? We can determine this by taking one level of residual at a time and overlaying it on the treatment factor structure, as is pictured below. It can be seen that one level of residual error does NOT cross any of the treatment level boundaries. Therefore, we can safely say that treatment is indeed outside of residual error; or equivalently that treatment is outside of residual error.</p>
+<p>Since treatment is not inside of residual error, does this
+necessarily mean that treatment is outside of residual error? We can
+determine this by taking one level of residual at a time and overlaying
+it on the treatment factor structure, as is pictured below. It can be
+seen that one level of residual error does NOT cross any of the
+treatment level boundaries. Therefore, we can safely say that treatment
+is indeed outside of residual error; or equivalently that treatment is
+outside of residual error.</p>
 <p><img src="images/inside_outside_4.JPG" /></p>
-<p>To clarify a common misunderstanding, consider an experiment where we are looking at the inside vs. outside relationship of two factors: A, and B.</p>
+<p>To clarify a common misunderstanding, consider an experiment where we
+are looking at the inside vs. outside relationship of two factors: A,
+and B.</p>
 <ul>
-<li>When factor A is inside of factor B, we can also say factor B is outside of factor A.</li>
-<li>But, when factor A is <em>not</em> inside of factor B, this does <em>not necessarily mean that factor A is outside of factor B</em>. Later you will come across designs where the two factors are neither outside nor inside of each other: they are crossed.</li>
+<li>When factor A is inside of factor B, we can also say factor B is
+outside of factor A.</li>
+<li>But, when factor A is <em>not</em> inside of factor B, this does
+<em>not necessarily mean that factor A is outside of factor B</em>.
+Later you will come across designs where the two factors are neither
+outside nor inside of each other: they are crossed.</li>
 </ul>
-<p>In summary, inside and outside factors for every basic one-way factorial design:</p>
+<p>In summary, inside and outside factors for every basic one-way
+factorial design:</p>
 <ul>
-<li>The <strong>benchmark factor</strong> is the outside factor for all the other factors (treatment and residual error)</li>
-<li>The <strong>treatment factor</strong> is an inside factor to the benchmark factor but an outside factor to the residual error.</li>
-<li>The <strong>residual error</strong> is an inside factor for all other factors (the benchmark and treatment factors).</li>
+<li>The <strong>benchmark factor</strong> is the outside factor for all
+the other factors (treatment and residual error)</li>
+<li>The <strong>treatment factor</strong> is an inside factor to the
+benchmark factor but an outside factor to the residual error.</li>
+<li>The <strong>residual error</strong> is an inside factor for all
+other factors (the benchmark and treatment factors).</li>
 </ul>
 </div>
 <div id="degrees-of-freedom" class="section level4">
 <h4>Degrees of Freedom</h4>
-<p>We can use our understanding of inside and outside factors to determine the degrees of freedom (df) for the <strong>benchmark</strong>, <strong>treatment</strong>, and <strong>residual errors</strong> factors.</p>
-<p>The general formula for degrees of freedom for any factor in a design is:</p>
+<p>We can use our understanding of inside and outside factors to
+determine the degrees of freedom (df) for the
+<strong>benchmark</strong>, <strong>treatment</strong>, and
+<strong>residual errors</strong> factors.</p>
+<p>The general formula for degrees of freedom for any factor in a design
+is:</p>
 <center>
 <blockquote>
-<p><strong>df = Total levels of a factor minus the sum of the df of all outside factors</strong></p>
+<p><strong>df = Total levels of a factor minus the sum of the df of all
+outside factors</strong></p>
 </blockquote>
 </center>
-<p>An alternative method of finding degrees of freedom is to count the number of unique pieces of information in a factor.</p>
-<p>Going back to the lifeboat training example (see example above), we have 24 observations total and four levels of the treatment.</p>
+<p>An alternative method of finding degrees of freedom is to count the
+number of unique pieces of information in a factor.</p>
+<p>Going back to the lifeboat training example (see example above), we
+have 24 observations total and four levels of the treatment.</p>
 <p><img src="images/BF1_factor_structure_with_equation.PNG" /></p>
-<p>For <strong>benchmark</strong>, there is only one level of the factor (shown by the one cell) and there are no outside factors for benchmark. Therefore, the degrees of freedom for benchmark is one. Another way to think of this is that the degrees of freedom represents the number of unique pieces of information contributing to the estimation of the effects for that factor. In this case, as soon as I know the benchmark value (or better stated, as soon as I estimate the benchmark value) for just one of the observations, I know it for all the observations. Therefore, there is just one degree of freedom.</p>
-<p>For <strong>treatment</strong>, there are four levels of the factor (shown by the four vertically long cells for treatment). Benchmark is the only factor outside of treatment. Take the number of levels for treatment (4) and subtract the degrees of freedom for benchmark (1), which yields 4-1 = <strong>3 degrees of freedom</strong> for treatment.</p>
-<p>We could just as easily have used the other approach to finding the degrees of freedom: counting the unique pieces of information the treatment effects really contains. Since all observations from the same treatment will have the same treatment effect applied, we really only need to know 4 pieces of information: the effect of each treatment. But the answer is actually less than that. Because we know that the effects must all sum to zero, only 3 of the effects are free to vary and the 4th one is constrained to be whatever value will satisfy this mathematical condition. Thus, the degrees of freedom is 3. As soon as we know 3 of the treatment effects, we can fill in the treatment effects for all the observations.</p>
-<p>For <strong>residual errors</strong>, there are 24 levels of the factor (as shown by the 24 cells for residual error on the far right of the factor structure diagram). Both benchmark and treatment are outside factors for the residual errors factor. Take the number of levels for the residual error (24) and subtract the sum of the degrees of freedom for benchmark and treatment (3+1=4). The residual error has 24 - (3+1) = <strong>20 degrees of freedom</strong>.</p>
-<p>The approach of counting unique pieces of information can be applied here as well. In this case, we use the fact that the treatment effects must sum to zero within each treatment. So within each treatment, 5 of the observations are free to vary, but the 6th will be determined by the fact that their sum must be zero. Five observations multiplied by 4 treatments is 20 observations, or in other words, 20 degrees of freedom.</p>
+<p>For <strong>benchmark</strong>, there is only one level of the factor
+(shown by the one cell) and there are no outside factors for benchmark.
+Therefore, the degrees of freedom for benchmark is one. Another way to
+think of this is that the degrees of freedom represents the number of
+unique pieces of information contributing to the estimation of the
+effects for that factor. In this case, as soon as I know the benchmark
+value (or better stated, as soon as I estimate the benchmark value) for
+just one of the observations, I know it for all the observations.
+Therefore, there is just one degree of freedom.</p>
+<p>For <strong>treatment</strong>, there are four levels of the factor
+(shown by the four vertically long cells for treatment). Benchmark is
+the only factor outside of treatment. Take the number of levels for
+treatment (4) and subtract the degrees of freedom for benchmark (1),
+which yields 4-1 = <strong>3 degrees of freedom</strong> for
+treatment.</p>
+<p>We could just as easily have used the other approach to finding the
+degrees of freedom: counting the unique pieces of information the
+treatment effects really contains. Since all observations from the same
+treatment will have the same treatment effect applied, we really only
+need to know 4 pieces of information: the effect of each treatment. But
+the answer is actually less than that. Because we know that the effects
+must all sum to zero, only 3 of the effects are free to vary and the 4th
+one is constrained to be whatever value will satisfy this mathematical
+condition. Thus, the degrees of freedom is 3. As soon as we know 3 of
+the treatment effects, we can fill in the treatment effects for all the
+observations.</p>
+<p>For <strong>residual errors</strong>, there are 24 levels of the
+factor (as shown by the 24 cells for residual error on the far right of
+the factor structure diagram). Both benchmark and treatment are outside
+factors for the residual errors factor. Take the number of levels for
+the residual error (24) and subtract the sum of the degrees of freedom
+for benchmark and treatment (3+1=4). The residual error has 24 - (3+1) =
+<strong>20 degrees of freedom</strong>.</p>
+<p>The approach of counting unique pieces of information can be applied
+here as well. In this case, we use the fact that the treatment effects
+must sum to zero within each treatment. So within each treatment, 5 of
+the observations are free to vary, but the 6th will be determined by the
+fact that their sum must be zero. Five observations multiplied by 4
+treatments is 20 observations, or in other words, 20 degrees of
+freedom.</p>
 </div>
 <div id="factor-effects" class="section level4">
 <h4>Factor Effects</h4>
-<p>We can use our understanding of inside vs. outside factors to estimate the effect size for the benchmark, treatment, and residual errors factors. In other words, we can estimate the terms in the one-way ANOVA model.</p>
-<p>The general formula for effect size for any factor of a design is:</p>
+<p>We can use our understanding of inside vs. outside factors to
+estimate the effect size for the benchmark, treatment, and residual
+errors factors. In other words, we can estimate the terms in the one-way
+ANOVA model.</p>
+<p>The general formula for effect size for any factor of a design
+is:</p>
 <center>
 <blockquote>
-<p><strong>Effect size = factor level mean minus the sum of the effects of all outside factors</strong></p>
+<p><strong>Effect size = factor level mean minus the sum of the effects
+of all outside factors</strong></p>
 </blockquote>
 </center>
-<p>To demonstrate this, the lifeboat training study will be used; where each column of data comes from a different training method (a.k.a. treatment).</p>
+<p>To demonstrate this, the lifeboat training study will be used; where
+each column of data comes from a different training method (a.k.a.
+treatment).</p>
 <p><img src="images/BF1_mean_blank.png" /></p>
 <div id="calculate-means" class="section level5">
 <h5>Calculate means</h5>
-<p>To estimate all the factor effects we must first calculate the mean for the benchmark factor and the means for each treatment level.</p>
-<p>For benchmark, get the mean of all 24 observations. The mean for all the observations is 6.5846. There is only one level for benchmark since, all observations come from the same benchmark. Therefore, this number is placed into each of the cells for the benchmark factor.</p>
+<p>To estimate all the factor effects we must first calculate the mean
+for the benchmark factor and the means for each treatment level.</p>
+<p>For benchmark, get the mean of all 24 observations. The mean for all
+the observations is 6.5846. There is only one level for benchmark since,
+all observations come from the same benchmark. Therefore, this number is
+placed into each of the cells for the benchmark factor.</p>
 <p><img src="images/BF1_mean_benchmark.png" /></p>
-<p>For the treatment factor, calculate the mean of each of the four levels. To calculate the mean for Control:</p>
+<p>For the treatment factor, calculate the mean of each of the four
+levels. To calculate the mean for Control:</p>
 <p><span class="math display">\[
 \frac{4.5614 + 6.6593 + 5.6427 + 6.4394 + 4.8635 + 0.3268}{6} = 4.7489
 \]</span></p>
-<p>You can similarly find the mean for monitor keyboard is 7.8492, the mean for head monitor display/joypad is 6.5789, and the mean for head monitor display/wearables is 7.1616. These numbers will be put in the columns associated with each level of the treatment (see below).</p>
+<p>You can similarly find the mean for monitor keyboard is 7.8492, the
+mean for head monitor display/joypad is 6.5789, and the mean for head
+monitor display/wearables is 7.1616. These numbers will be put in the
+columns associated with each level of the treatment (see below).</p>
 <p><img src="images/BF1_means_decomp.png" /></p>
 </div>
 <div id="calculate-effects" class="section level5">
 <h5>Calculate effects</h5>
-<p>From here we can calculate the effects for benchmark, treatment and residual errors. We will use the general formula for calculating effect size as stated above.</p>
-<p>For the benchmark, there is only one level and there are no outside factors. Therefore, the effect due to benchmark is 6.5846 (equivalent to its mean) and this affect is applied to all 24 observations.</p>
-<p>For the treatment factor there are four means, one for each level. To calculate this, take the factor level mean and subtract it from the effect due to benchmark to get the effect for each treatment level. For Control, this looks like:</p>
+<p>From here we can calculate the effects for benchmark, treatment and
+residual errors. We will use the general formula for calculating effect
+size as stated above.</p>
+<p>For the benchmark, there is only one level and there are no outside
+factors. Therefore, the effect due to benchmark is 6.5846 (equivalent to
+its mean) and this affect is applied to all 24 observations.</p>
+<p>For the treatment factor there are four means, one for each level. To
+calculate this, take the factor level mean and subtract it from the
+effect due to benchmark to get the effect for each treatment level. For
+Control, this looks like:</p>
 <p><span class="math display">\[
 4.789 - 6.5846 = -1.8358
 \]</span></p>
-<p>Being in the control group has the effect of <em>reducing</em> the student’s performance by 1.8358 on average compared to the overall, or grand, mean. In a similar way you can find the effect for Monitor/Keyboard 7.8492 - 6.5846 = 1.2645. This means the student performance scores increased by 1.2645 on average in this condition compared to the overall mean. For Head Monitor Display/Joypad, the effect is -0.0058 (6.5789 - 6.5846). For Head Monitor Display/Wearables, the effect is 0.5770 (7.1616 - 6.5846) (see below).</p>
+<p>Being in the control group has the effect of <em>reducing</em> the
+student’s performance by 1.8358 on average compared to the overall, or
+grand, mean. In a similar way you can find the effect for
+Monitor/Keyboard 7.8492 - 6.5846 = 1.2645. This means the student
+performance scores increased by 1.2645 on average in this condition
+compared to the overall mean. For Head Monitor Display/Joypad, the
+effect is -0.0058 (6.5789 - 6.5846). For Head Monitor Display/Wearables,
+the effect is 0.5770 (7.1616 - 6.5846) (see below).</p>
 <p><img src="images/BF1_trt_effect_boat_decomp.png" /></p>
-<p>To calculate the residual error effects we must remember that there are 24 levels of residuals. Therefore, the factor level mean for a residual is simply the observed value itself. This means the residual effect can be calculated by taking an observed value and subtracting the effects for benchmark and the effect for the treatment that particular observation received. For instance, for the observation located in the top left of our dataset the observed value is 4.5614. Subtract the sum of the effects of outside factors (benchmark and treatment). This observation was from the control group so we get:</p>
+<p>To calculate the residual error effects we must remember that there
+are 24 levels of residuals. Therefore, the factor level mean for a
+residual is simply the observed value itself. This means the residual
+effect can be calculated by taking an observed value and subtracting the
+effects for benchmark and the effect for the treatment that particular
+observation received. For instance, for the observation located in the
+top left of our dataset the observed value is 4.5614. Subtract the sum
+of the effects of outside factors (benchmark and treatment). This
+observation was from the control group so we get:</p>
 <p><span class="math display">\[
 4.5614 - (6.5846 + -1.8358) = -0.1875
 \]</span></p>
-<p>The value for the top left cell in residual errors effects is -0.1875. This means the observed value of 4.5614 was lower than we would have expected it to be. In other words, the performance score of 4.5614 was -0.1875 less than the average for all observations in the control group. In context of the this study, this individual’s performance was lower than his/her peers who received the same type of training.</p>
-<p>We can repeat the calculation for the first residual in the second column. Take the observed value (5.4532) and subtract the sum of the effect due to benchmark and its respective treatment (in this case monitor/keyboard). The residual is</p>
+<p>The value for the top left cell in residual errors effects is
+-0.1875. This means the observed value of 4.5614 was lower than we would
+have expected it to be. In other words, the performance score of 4.5614
+was -0.1875 less than the average for all observations in the control
+group. In context of the this study, this individual’s performance was
+lower than his/her peers who received the same type of training.</p>
+<p>We can repeat the calculation for the first residual in the second
+column. Take the observed value (5.4532) and subtract the sum of the
+effect due to benchmark and its respective treatment (in this case
+monitor/keyboard). The residual is</p>
 <p><span class="math display">\[
 5.4523 - (6.5846 + 1.2645) = -2.3960
 \]</span></p>
-<p>Repeat this process for all the remaining 22 residual values. The result is shown in the table below on the right.</p>
+<p>Repeat this process for all the remaining 22 residual values. The
+result is shown in the table below on the right.</p>
 <p><img src="images/BF1_effect_boat_decomp.png" /></p>
 </div>
 </div>
 <div id="completing-the-anova-table" class="section level4">
 <h4>Completing the ANOVA table</h4>
-<p>Now that we have calculated degrees of freedom and effects for each factor in a basic one-way factorial design, we can calculate the remaining pieces of the ANOVA table: <strong>Sum of Squares (SS), Mean Squares (MS), F-statistic and p-value</strong>. An ANOVA table essentially steps through the variance calculation that is needed to calculate the F statistics of an ANOVA test. In other words, a completed ANOVA table enables us to conduct a hypothesis test of the significance of the treatment.</p>
-<p>In an ANOVA table, each factor and their associated degrees of freedom are listed on the left. Note: the total degrees of freedom are the total number of observations.</p>
+<p>Now that we have calculated degrees of freedom and effects for each
+factor in a basic one-way factorial design, we can calculate the
+remaining pieces of the ANOVA table: <strong>Sum of Squares (SS), Mean
+Squares (MS), F-statistic and p-value</strong>. An ANOVA table
+essentially steps through the variance calculation that is needed to
+calculate the F statistics of an ANOVA test. In other words, a completed
+ANOVA table enables us to conduct a hypothesis test of the significance
+of the treatment.</p>
+<p>In an ANOVA table, each factor and their associated degrees of
+freedom are listed on the left. Note: the total degrees of freedom are
+the total number of observations.</p>
 <table style="width:65%; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
@@ -956,25 +1211,47 @@ Total
 </tr>
 </tbody>
 </table>
-<p>To get the <strong>sum of squares (SS)</strong> for a factor, for each observation the effect for that factor needs to be squared. Then all the squared values are summed up to get the sum of squares.</p>
-<p>For <strong>benchmark</strong>, the effect of 6.5845 is listed 24 times, once for each observation. The value of 6.5845 will be squared. This squaring will be done 24 times and the squared values will then be added together to get the sum of squares due to benchmark.</p>
+<p>To get the <strong>sum of squares (SS)</strong> for a factor, for
+each observation the effect for that factor needs to be squared. Then
+all the squared values are summed up to get the sum of squares.</p>
+<p>For <strong>benchmark</strong>, the effect of 6.5845 is listed 24
+times, once for each observation. The value of 6.5845 will be squared.
+This squaring will be done 24 times and the squared values will then be
+added together to get the sum of squares due to benchmark.</p>
 <p><span class="math display">\[
-SS_\text{Benchmark} = (6.5845)^2 + (6.5845)^2 + ... + (6.5845)^2 = 24*(6.5845)^2 = 1040.57
+SS_\text{Benchmark} = (6.5845)^2 + (6.5845)^2 + ... + (6.5845)^2 =
+24*(6.5845)^2 = 1040.57
 \]</span></p>
 <p><br></p>
-<p>The <strong>treatment factor</strong> has four different effects, one for each level of the factor. For each effect, the value is squared and then multiplied by the number of observations within the level of the factor. Then, the results are added across all levels to get the sum of squares due to treatment. For instance, for the control group, the effect is -1.8358. The value is then squared, and then multiplied by six due to the six observations within the control group. This is done for the other three levels as well and then the resulting values from the four levels are added.</p>
+<p>The <strong>treatment factor</strong> has four different effects, one
+for each level of the factor. For each effect, the value is squared and
+then multiplied by the number of observations within the level of the
+factor. Then, the results are added across all levels to get the sum of
+squares due to treatment. For instance, for the control group, the
+effect is -1.8358. The value is then squared, and then multiplied by six
+due to the six observations within the control group. This is done for
+the other three levels as well and then the resulting values from the
+four levels are added.</p>
 <p><span class="math display">\[
-SS_\text{Treatment} = 6*(-1.8358)^2 + 6*(1.2645)^2 + 6*(-0.0058)^2 + 6*(0.5770)^2 = 31.81
+SS_\text{Treatment} = 6*(-1.8358)^2 + 6*(1.2645)^2 + 6*(-0.0058)^2 +
+6*(0.5770)^2 = 31.81
 \]</span> <br></p>
-<p>The effect for the <strong>residual error factor</strong> has 24 unique values. Each of those residuals are squared and then the squared values are summed together.</p>
+<p>The effect for the <strong>residual error factor</strong> has 24
+unique values. Each of those residuals are squared and then the squared
+values are summed together.</p>
 <p><span class="math display">\[
-SS_\text{Residuals} = (-0.1875)^2 + (1.9105)^2 + (0.8939)^2 + (1.6906)^2 + ... + (-2.0157)^2 = 100.49
+SS_\text{Residuals} = (-0.1875)^2 + (1.9105)^2 + (0.8939)^2 + (1.6906)^2
++ ... + (-2.0157)^2 = 100.49
 \]</span> <br></p>
-<p>To get the <strong>total sum of squares</strong>, we can either square all the observations and then add the squared values,</p>
+<p>To get the <strong>total sum of squares</strong>, we can either
+square all the observations and then add the squared values,</p>
 <p><span class="math display">\[
-SS_\text{Total} = (4.5614)^2 + (6.6593)^2 + (5.6427)^2 + (6.4394)^2 + ... + (5.1459)^2 = 1172.87
+SS_\text{Total} = (4.5614)^2 + (6.6593)^2 + (5.6427)^2 + (6.4394)^2 +
+... + (5.1459)^2 = 1172.87
 \]</span></p>
-<p><strong>-OR-</strong> we can get the same result if we add together the sum of squares for the benchmark, treatment, and residual error factors.</p>
+<p><strong>-OR-</strong> we can get the same result if we add together
+the sum of squares for the benchmark, treatment, and residual error
+factors.</p>
 <p><span class="math display">\[
 SS_\text{Total} = 1040.57 + 31.81 + 100.49 = 1172.87
 \]</span></p>
@@ -1073,19 +1350,30 @@ Total
 </tr>
 </tbody>
 </table>
-<p>We can now calculate the mean squared error column, or <strong>mean square (MS)</strong>. This mean is calculated by dividing sum of squares by the number of unique pieces of information that make up the factor. In this way we convert a total into an average; or in other words we change a sum into a mean. The mean squared error is the same as a variance. (The Root Mean Squared Error is equivalent to a standard deviation).</p>
-<p>The purpose of the ANOVA table is to partition or break apart the variability in the dataset to its component pieces. We can then see more clearly which factor is the a bigger source of variability.</p>
+<p>We can now calculate the mean squared error column, or <strong>mean
+square (MS)</strong>. This mean is calculated by dividing sum of squares
+by the number of unique pieces of information that make up the factor.
+In this way we convert a total into an average; or in other words we
+change a sum into a mean. The mean squared error is the same as a
+variance. (The Root Mean Squared Error is equivalent to a standard
+deviation).</p>
+<p>The purpose of the ANOVA table is to partition or break apart the
+variability in the dataset to its component pieces. We can then see more
+clearly which factor is the a bigger source of variability.</p>
 <p>The mean square calculations are:</p>
 <p><span class="math display">\[
-MS_\text{Benchmark} = \frac{SS_\text{Benchmark}}{df_\text{Benchmark}} = \frac{1040.57}{1} = 1040.57
+MS_\text{Benchmark} = \frac{SS_\text{Benchmark}}{df_\text{Benchmark}} =
+\frac{1040.57}{1} = 1040.57
 \]</span></p>
 <p><br></p>
 <p><span class="math display">\[
-MS_\text{Treatment} = \frac{SS_\text{Treatment}}{df_\text{Treatment}} = \frac{31.81}{3} = 10.60
+MS_\text{Treatment} = \frac{SS_\text{Treatment}}{df_\text{Treatment}} =
+\frac{31.81}{3} = 10.60
 \]</span></p>
 <p><br></p>
 <p><span class="math display">\[
-MS_\text{Residual Error} = \frac{SS_\text{Residual Error}}{df_\text{Residual Error}} = \frac{100.49}{20} = 5.02
+MS_\text{Residual Error} = \frac{SS_\text{Residual
+Error}}{df_\text{Residual Error}} = \frac{100.49}{20} = 5.02
 \]</span></p>
 <p><br></p>
 <table style="width:65%; margin-left: auto; margin-right: auto;" class="table">
@@ -1185,16 +1473,37 @@ Total
 </tr>
 </tbody>
 </table>
-<p>When getting an <strong>F test statistic</strong>, testing for the treatment factor is the primary factor of interest so only the F test statistic for treatment is calculated for the analysis. To get the F test statistic for treatment, take the mean square (MS) due to treatment and divide by the mean square (MS) due to the residual error. Since the mean square error is equivalent to a variance, you can think of this as calculating the variance in treatment effect sizes in the numerator and the variance of the distances for an observed value to its respective treatment mean in the denominator. Simply put, it is the between groups variance divided by the within group variance.</p>
+<p>When getting an <strong>F test statistic</strong>, testing for the
+treatment factor is the primary factor of interest so only the F test
+statistic for treatment is calculated for the analysis. To get the F
+test statistic for treatment, take the mean square (MS) due to treatment
+and divide by the mean square (MS) due to the residual error. Since the
+mean square error is equivalent to a variance, you can think of this as
+calculating the variance in treatment effect sizes in the numerator and
+the variance of the distances for an observed value to its respective
+treatment mean in the denominator. Simply put, it is the between groups
+variance divided by the within group variance.</p>
 <p><span class="math display">\[
-F_\text{Treatment} = \frac{MS_\text{Treatment}}{MS_\text{Residual Error}} = \frac{10.6}{5.02} = 2.11
+F_\text{Treatment} = \frac{MS_\text{Treatment}}{MS_\text{Residual
+Error}} = \frac{10.6}{5.02} = 2.11
 \]</span></p>
 <p><br></p>
-<p>To complete the ANOVA, table, the <strong>p-value for treatment</strong> is calculated based on the F statistic for treatment and the degrees of freedom for both Treatment and Residual Error. In practice, you would not compute this by hand, but in order to complete the decomposition of variance in a manual way, we will calculate the p-value in R using the <code>pf()</code> function: <code>1 - pf(test statistic, df of Treatment, df of Residual error)</code>.</p>
+<p>To complete the ANOVA, table, the <strong>p-value for
+treatment</strong> is calculated based on the F statistic for treatment
+and the degrees of freedom for both Treatment and Residual Error. In
+practice, you would not compute this by hand, but in order to complete
+the decomposition of variance in a manual way, we will calculate the
+p-value in R using the <code>pf()</code> function:
+<code>1 - pf(test statistic, df of Treatment, df of Residual error)</code>.</p>
 <p>In this example, we get</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(<span class="fl">2.11</span>, <span class="dv">3</span>, <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(<span class="fl">2.11</span>, <span class="dv">3</span>, <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] 0.1310051</code></pre>
-<p>This p-value, 0.1310, is greater than a typical level of significance (0.05), so we would fail to reject the null hypothesis that all the effects due to treatment are equal to zero. Meaning, we have insufficient evidence to say that any of the training methods had an impact on procedural knowledge test scores regarding launching a life boat.</p>
+<p>This p-value, 0.1310, is greater than a typical level of significance
+(0.05), so we would fail to reject the null hypothesis that all the
+effects due to treatment are equal to zero. Meaning, we have
+insufficient evidence to say that any of the training methods had an
+impact on procedural knowledge test scores regarding launching a life
+boat.</p>
 <table style="width:65%; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
@@ -1299,25 +1608,30 @@ Total
 </div>
 <div id="r-instructions" class="section level3">
 <h3>R Instructions</h3>
-<p><strong>The following stuff would belong in the R code pages instead of here</strong></p>
+<p><strong>The following stuff would belong in the R code pages instead
+of here</strong></p>
 <div id="numerical-summaries" class="section level4">
 <h4>Numerical Summaries</h4>
 <p>In the following explanations</p>
 <ul>
-<li>Y must be a “numeric” vector of the quantitative response variable.</li>
-<li>X is a qualitative variable (should have class(X) equal to factor or character. If it does not, use as.factor(X) inside the aov(Y ~ as.factor(X),…) command.</li>
+<li>Y must be a “numeric” vector of the quantitative response
+variable.</li>
+<li>X is a qualitative variable (should have class(X) equal to factor or
+character. If it does not, use as.factor(X) inside the aov(Y ~
+as.factor(X),…) command.</li>
 <li>YourDataSet is the name of your data set.</li>
 </ul>
-<p>You can take a tidyverse approach or a mosaic package approach to calculating numerical summaries.</p>
+<p>You can take a tidyverse approach or a mosaic package approach to
+calculating numerical summaries.</p>
 <p>mosaic package:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">library</span>(mosaic)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">library</span>(pander)</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">favstats</span>(Y<span class="op">~</span>X, <span class="dt">data=</span>YourDataSet)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(Y<span class="sc">~</span>X, <span class="at">data=</span>YourDataSet)</span></code></pre></div>
 <p>tidyverse approach:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>YourDataSet <span class="op">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="st">  </span><span class="kw">Group_by</span>(X) <span class="op">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="st">  </span><span class="kw">Summarise</span>(<span class="dt">MeanY =</span> <span class="kw">mean</span>(Y), <span class="dt">sdY =</span> <span class="kw">sd</span>(Y), <span class="dt">sampleSize =</span> <span class="kw">n</span>()) </span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>YourDataSet <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Group_by</span>(X) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Summarise</span>(<span class="at">MeanY =</span> <span class="fu">mean</span>(Y), <span class="at">sdY =</span> <span class="fu">sd</span>(Y), <span class="at">sampleSize =</span> <span class="fu">n</span>()) </span></code></pre></div>
 </div>
 <div id="graphical-summaries" class="section level4">
 <h4>Graphical Summaries</h4>
@@ -1342,108 +1656,155 @@ Total
 </div>
 <div id="links-to-outside-resources" class="section level4">
 <h4>Links to outside resources</h4>
-<p>Populate this section yourself with links to good examples, definitions, other sections within this textbook, or anything else you think will be interesting/helpful.</p>
+<p>Populate this section yourself with links to good examples,
+definitions, other sections within this textbook, or anything else you
+think will be interesting/helpful.</p>
 <hr />
 </div>
 </div>
 </div>
 <div id="bf2" class="section level2 tabset tabset-fade tabset-pills">
-<h2>BF[2]</h2>
-<p>A study with exactly two factors used to predict a continuous response variable.</p>
+<h2 class="tabset tabset-fade tabset-pills">BF[2]</h2>
+<p>A study with exactly two factors used to predict a continuous
+response variable.</p>
 <div id="overview-1" class="section level3">
 <h3>Overview</h3>
 <p>Lorem Ipsum Overview</p>
 <div id="hypotheses-and-model-1" class="section level4">
 <h4>Hypotheses and model</h4>
-<p>Here we would list the model in equation form along with the hypotheses we would want to test</p>
+<p>Here we would list the model in equation form along with the
+hypotheses we would want to test</p>
 </div>
 <div id="assumptions-1" class="section level4">
 <h4>Assumptions</h4>
-<p>A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics</p>
+<p>A quick recount of the assumptions associated with the model. If this
+gets too repetitive maybe we could take it out and put it under broad
+topics</p>
 </div>
 <div id="factor-structure-image" class="section level4">
 <h4>Factor structure image</h4>
-<p>This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.</p>
+<p>This image would actually probably go at the top somewhere, maybe
+even by or above the title, as a sort of visual anchor/synopsis as to
+what this design is all about in terms of its structural factors.</p>
 <hr />
 </div>
 </div>
 <div id="design-1" class="section level3">
 <h3>Design</h3>
-<p>This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there’s a lot to describe. For partial fractional factorials it could get interesting, etc.</p>
+<p>This will explain how random assignment is conducted. It may
+generally be a short section, especially since I already explained about
+completely random assignment above. However, it could get more in-depth.
+For example, in blocking you can talk about the different methods for
+creating blocks, or for Latin Squares there’s a lot to describe. For
+partial fractional factorials it could get interesting, etc.</p>
 <hr />
 </div>
 <div id="decomposition" class="section level3">
 <h3>Decomposition</h3>
-<p>It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like <strong>notation</strong> get defined, and concepts like <strong>inside vs. outside factors?</strong> Should those go in the broad topics menu?</p>
+<p>It is what it sounds like: discussion of effect calculation, degree
+of freedom calculation, and factor structure diagrams. Where do things
+like <strong>notation</strong> get defined, and concepts like
+<strong>inside vs. outside factors?</strong> Should those go in the
+broad topics menu?</p>
 <hr />
 </div>
 <div id="r-instruction" class="section level3">
 <h3>R Instruction</h3>
-<p>It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like <strong>notation</strong> get defined, and concepts like <strong>inside vs. outside factors?</strong> Should those go in the broad topics menu?</p>
+<p>It is what it sounds like: discussion of effect calculation, degree
+of freedom calculation, and factor structure diagrams. Where do things
+like <strong>notation</strong> get defined, and concepts like
+<strong>inside vs. outside factors?</strong> Should those go in the
+broad topics menu?</p>
 </div>
 <div id="resources-1" class="section level3">
 <h3>Resources</h3>
 <div id="examples-1" class="section level4">
 <h4>Examples</h4>
-<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+<p>Here we could link to a full walk through example of the anlaysis
+(similar to the Math325 notebook)</p>
 </div>
 <div id="links-to-outside-resources-1" class="section level4">
 <h4>Links to outside resources</h4>
-<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+<p>This section the student would populate with links to good examples,
+definitions, other sections within this textbook, or anything else</p>
 <hr />
 </div>
 </div>
 </div>
 <div id="bf3" class="section level2 tabset tabset-fade tabset-pills">
-<h2>BF[3]</h2>
-<p>A study with exactly three factors used to predict a continuous response variable.</p>
+<h2 class="tabset tabset-fade tabset-pills">BF[3]</h2>
+<p>A study with exactly three factors used to predict a continuous
+response variable.</p>
 <div id="overview-2" class="section level3">
 <h3>Overview</h3>
 <p>Lorem Ipsum Overview</p>
 <div id="hypotheses-and-model-2" class="section level4">
 <h4>Hypotheses and model</h4>
-<p>Here we would list the model in equation form along with the hypotheses we would want to test</p>
+<p>Here we would list the model in equation form along with the
+hypotheses we would want to test</p>
 </div>
 <div id="assumptions-2" class="section level4">
 <h4>Assumptions</h4>
-<p>A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics</p>
+<p>A quick recount of the assumptions associated with the model. If this
+gets too repetitive maybe we could take it out and put it under broad
+topics</p>
 </div>
 <div id="factor-structure-image-1" class="section level4">
 <h4>Factor structure image</h4>
-<p>This image would actually probably go at the top somewhere, maybe even by or above the title, as a sort of visual anchor/synopsis as to what this design is all about in terms of its structural factors.</p>
+<p>This image would actually probably go at the top somewhere, maybe
+even by or above the title, as a sort of visual anchor/synopsis as to
+what this design is all about in terms of its structural factors.</p>
 <hr />
 </div>
 </div>
 <div id="design-2" class="section level3">
 <h3>Design</h3>
-<p>This will explain how random assignment is conducted. It may generally be a short section, especially since I already explained about completely random assignment above. However, it could get more in-depth. For example, in blocking you can talk about the different methods for creating blocks, or for Latin Squares there’s a lot to describe. For partial fractional factorials it could get interesting, etc.</p>
+<p>This will explain how random assignment is conducted. It may
+generally be a short section, especially since I already explained about
+completely random assignment above. However, it could get more in-depth.
+For example, in blocking you can talk about the different methods for
+creating blocks, or for Latin Squares there’s a lot to describe. For
+partial fractional factorials it could get interesting, etc.</p>
 <hr />
 </div>
 <div id="decomposition-1" class="section level3">
 <h3>Decomposition</h3>
-<p>It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like <strong>notation</strong> get defined, and concepts like <strong>inside vs. outside factors?</strong> Should those go in the broad topics menu?</p>
+<p>It is what it sounds like: discussion of effect calculation, degree
+of freedom calculation, and factor structure diagrams. Where do things
+like <strong>notation</strong> get defined, and concepts like
+<strong>inside vs. outside factors?</strong> Should those go in the
+broad topics menu?</p>
 <hr />
 </div>
 <div id="r-instruction-1" class="section level3">
 <h3>R Instruction</h3>
-<p>It is what it sounds like: discussion of effect calculation, degree of freedom calculation, and factor structure diagrams. Where do things like <strong>notation</strong> get defined, and concepts like <strong>inside vs. outside factors?</strong> Should those go in the broad topics menu?</p>
+<p>It is what it sounds like: discussion of effect calculation, degree
+of freedom calculation, and factor structure diagrams. Where do things
+like <strong>notation</strong> get defined, and concepts like
+<strong>inside vs. outside factors?</strong> Should those go in the
+broad topics menu?</p>
 </div>
 <div id="resources-2" class="section level3">
 <h3>Resources</h3>
 <div id="examples-2" class="section level4">
 <h4>Examples</h4>
-<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+<p>Here we could link to a full walk through example of the anlaysis
+(similar to the Math325 notebook)</p>
 </div>
 <div id="links-to-outside-resources-2" class="section level4">
 <h4>Links to outside resources</h4>
-<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+<p>This section the student would populate with links to good examples,
+definitions, other sections within this textbook, or anything else</p>
 <hr />
 </div>
 </div>
 </div>
-<div id="fractional-factorial-designs" class="section level2 tabset tabset-fade tabset-pills">
-<h2>Fractional Factorial Designs</h2>
-<p>This would probably not follow a similar structure as other sections</p>
+<div id="fractional-factorial-designs"
+class="section level2 tabset tabset-fade tabset-pills">
+<h2 class="tabset tabset-fade tabset-pills">Fractional Factorial
+Designs</h2>
+<p>This would probably not follow a similar structure as other
+sections</p>
 <div id="overview-3" class="section level3">
 <h3>Overview??</h3>
 <p>Lorem Ipsum Overview</p>
@@ -1451,12 +1812,15 @@ Total
 </div>
 <div id="how-many-treatments-design-rank" class="section level3">
 <h3>How many treatments, design rank</h3>
-<p>Here we would list the model in equation form along with the hypotheses we would want to test</p>
+<p>Here we would list the model in equation form along with the
+hypotheses we would want to test</p>
 <hr />
 </div>
 <div id="confounding-and-a-generating-function" class="section level3">
 <h3>Confounding and a Generating Function</h3>
-<p>A quick recount of the assumptions associated with the model. If this gets too repetitive maybe we could take it out and put it under broad topics</p>
+<p>A quick recount of the assumptions associated with the model. If this
+gets too repetitive maybe we could take it out and put it under broad
+topics</p>
 <hr />
 </div>
 <div id="anything-else" class="section level3">
@@ -1467,13 +1831,18 @@ Total
 <h3>Additional resources and links</h3>
 <div id="examples-3" class="section level4">
 <h4>Examples</h4>
-<p>Here we could link to a full walk through example of the anlaysis (similar to the Math325 notebook)</p>
+<p>Here we could link to a full walk through example of the anlaysis
+(similar to the Math325 notebook)</p>
 </div>
 <div id="links-to-outside-resources-3" class="section level4">
 <h4>Links to outside resources</h4>
-<p>This section the student would populate with links to good examples, definitions, other sections within this textbook, or anything else</p>
+<p>This section the student would populate with links to good examples,
+definitions, other sections within this textbook, or anything else</p>
 <hr />
-<p>The decompositions presented in this book are all for balanced designs. Unbalanced designs (where not all treatments have an equal number of observations) use more complicated formulas, but a similar approach/process of decomposition is used.</p>
+<p>The decompositions presented in this book are all for balanced
+designs. Unbalanced designs (where not all treatments have an equal
+number of observations) use more complicated formulas, but a similar
+approach/process of decomposition is used.</p>
 </div>
 </div>
 </div>
