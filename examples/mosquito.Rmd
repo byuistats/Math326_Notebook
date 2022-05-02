@@ -89,8 +89,9 @@ qqPlot(mosquito.aov, id=FALSE)
 ```
    
 The following plot shows which types of material minimize the human mosquito contact.
+
 ```{r,warning=FALSE, message=FALSE}
-xyplot(y.mosq ~ as.factor(Treatment), data=mosquito, type=c("p","a"), main="Human Mosquito Contact Based on Type of Material", xlab ="Treatment", ylab = "Amount of Mosquito Human Contact")
+boxplot(y.mosq ~ as.factor(Treatment), data=mosquito, main="Human Mosquito Contact Based on Type of Material", xlab ="Treatment", ylab = "Amount of Mosquito Human Contact")
 ```
 
 The averages are illustrated with the blue line in the plot above and the table below shows the means, standard deviations, and sample sizes for each of the five different materials.

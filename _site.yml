@@ -57,10 +57,8 @@ navbar:
           href: WilcoxonTests.html
     - text: "R Instructions"
       menu:
-        - text: "Numerical summaries"
-          href: numerical_summaries.html
-        - text: "Graphical summaries"
-          href: graphical_summaries.html
+        - text: "Descriptive Summaries"
+          href: DescribeData.html
         - text: "Model diagnostics"
           href: model_diagnostics.html
   right:

@@ -8,29 +8,27 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## An Customizable Textbook
+## A Customizable Textbook
 
 This book is meant to be a starting point for you to learn design and analysis of experiments. You should feel free to edit the Rmarkdown files so that the book becomes your own.
 
 ### How to Use This Book
 
-Under Principles of Experiments the most foundational issues that face each experimenter are described.
+Under **Principles of Experiments** the most foundational issues that face each experimenter are described.
 
-The Specific Designs section addresses specific designs we will learn about in this course. Each design will have an image next to it representing the diagram of the structural factors. 
+The **Specific Designs** section addresses specific designs we will learn about in this course. Each design will have an image next to it representing the diagram of the structural factors. Within each of these designs there are subsections: 
 
-This list is by no means exhaustive. The taxonomy used for the drop-down works well when we want to cover just these basic few designs but a new taxonomy may work better if more complex designs are considered. Within each of these designs there are subsections: 
-
-* Overview
-* Design
-* Decomposition
-* R instructions: code illustrating how to run the model
-* Resources
+* Overview contains the model, factor structure and hypotheses
+* Design discusses how the randomization is implemented and why
+* Decomposition is a bridge between the design and analysis. It walks through creating an ANOVA table by hand for the given design to allow you to see how the factor structure affects the analysis.
+* R instructions provides interactive code illustrating how to run the model
+* Resources contains worked examples and a space for you to store other links and info
     
-The section labeled Broad Topics seeks to address topics that are relevant to many experiment designs.
+The section labeled **Broad Topics** seeks to address topics that are relevant to many experiment designs.
 
-Finally, a section dedicated to R code that can be used in multiple designs. This includes numerical and graphical data summaries as well as code for model diagnostics/assumption checking.
+Finally, a section dedicated to **R code** that can be used in multiple designs. This includes numerical and graphical data summaries as well as code for model diagnostics/assumption checking.
 
-You are welcome to add additional specific designs or add to the list of broad topics.
+You should add additional topics and designs as you learn more, even after the course is over. The book is meant to be fully customizable and growing to reflect your growing understanding.
 
 #### Suggested Sequence of Topics for Teaching
 
